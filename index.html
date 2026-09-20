@@ -1,0 +1,2529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>QASWAAH General Contracting Establishment</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+/* ============================================================
+   1. RESET & BASE  (sirf ek baar — pehle 6 baar repeat ho raha tha)
+   ============================================================ */
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+html, body {
+    width:100%;
+    max-width:100%;
+    overflow-x:hidden;
+}
+
+body {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color:#f4f4f4;
+    color:#333;
+    padding:0;            /* pehle body par 40px 20px padding thi jo hero ko bhi tor rahi thi */
+}
+
+img { max-width:100%; height:auto; }
+
+/* Har badi section ko safe wrapper */
+.page-block {
+    max-width:1200px;
+    margin:60px auto 0 auto;
+    padding-left:20px;
+    padding-right:20px;
+}
+
+/* ============================================================
+   2. HEADER / NAV
+   ============================================================ */
+header {
+    background:#fff;
+    box-shadow:0 2px 5px rgba(0,0,0,0.1);
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+.nav-container {
+    max-width:1200px;
+    margin:0 auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 20px;
+}
+.logo { font-size:26px; font-weight:800; color:#111; letter-spacing:1px; }
+.nav-links { display:flex; gap:25px; list-style:none; }
+.nav-links a {
+    text-decoration:none; color:#444; font-weight:600; font-size:14px; transition:color .3s;
+}
+.nav-links a:hover { color:#c5a059; }
+
+.nav-toggle {
+    display:none;
+    background:none;
+    border:none;
+    font-size:22px;
+    color:#0d233a;
+    cursor:pointer;
+}
+
+@media (max-width:900px) {
+    .nav-toggle { display:block; }
+    .nav-links {
+        display:none;
+        position:absolute;
+        top:100%;
+        left:0;
+        right:0;
+        background:#fff;
+        flex-direction:column;
+        gap:0;
+        padding:10px 20px 20px;
+        box-shadow:0 8px 15px rgba(0,0,0,0.08);
+    }
+    .nav-links.open { display:flex; }
+    .nav-links li { border-bottom:1px solid #f0f0f0; }
+    .nav-links a { display:block; padding:12px 0; }
+}
+
+/* ============================================================
+   3. HERO SLIDER
+   ============================================================ */
+.hero-slider-section { width:100%; position:relative; background:#111; }
+.slider-container { position:relative; width:100%; height:550px; overflow:hidden; }
+.slide { position:absolute; inset:0; opacity:0; transition:opacity .8s ease-in-out; }
+.slide.active { opacity:1; z-index:2; }
+.slide img { width:100%; height:100%; object-fit:cover; filter:brightness(.6); }
+
+.slide-content { position:absolute; bottom:80px; left:80px; max-width:700px; color:#fff; z-index:3; }
+.slide-content h1 { font-size:42px; font-weight:800; line-height:1.2; margin-bottom:15px; text-transform:uppercase; }
+.slide-content p { font-size:16px; letter-spacing:.5px; }
+
+.slider-btn {
+    position:absolute; top:50%; transform:translateY(-50%);
+    background:rgba(0,0,0,.4); color:#fff; border:none;
+    font-size:24px; padding:15px 20px; cursor:pointer; z-index:10; transition:background .3s;
+}
+.slider-btn:hover { background:rgba(0,0,0,.8); }
+.prev-btn { left:0; } .next-btn { right:0; }
+
+.slider-dots { position:absolute; bottom:25px; right:50px; display:flex; gap:8px; z-index:10; }
+.dot { width:12px; height:12px; background:rgba(255,255,255,.5); border-radius:50%; cursor:pointer; }
+.dot.active { background:#c5a059; }
+
+@media (max-width:768px) {
+    .slider-container { height:320px; }
+    .slide-content { left:20px; right:20px; bottom:40px; }
+    .slide-content h1 { font-size:22px; }
+    .slide-content p { font-size:13px; }
+    .slider-dots { right:20px; bottom:15px; }
+    .slider-btn { padding:10px 14px; font-size:18px; }
+}
+
+/* ============================================================
+   4. OVERVIEW
+   ============================================================ */
+.overview-section {
+    max-width:1200px; margin:80px auto; padding:0 20px;
+    display:flex; align-items:center; gap:60px;
+}
+.overview-image { flex:1; border-radius:6px; overflow:hidden; box-shadow:0 10px 30px rgba(0,0,0,.1); }
+.overview-image img { width:100%; height:400px; object-fit:cover; display:block; }
+.overview-content { flex:1; }
+.overview-tag {
+    font-size:13px; font-weight:700; color:#777; letter-spacing:2px;
+    text-transform:uppercase; margin-bottom:15px; display:flex; align-items:center; gap:10px;
+}
+.overview-tag::after { content:""; width:40px; height:2px; background:#777; }
+.overview-content h2 { font-size:42px; font-weight:800; color:#0b2240; line-height:1.15; margin-bottom:20px; }
+.overview-content p { font-size:15px; line-height:1.7; color:#555; }
+
+@media (max-width:900px) {
+    .overview-section { flex-direction:column; gap:30px; margin:50px auto; }
+    .overview-content h2 { font-size:28px; }
+    .overview-image img { height:240px; }
+}
+
+/* ============================================================
+   5. STATS BAR
+   ============================================================ */
+.stats-services-section { background:#fff; padding:60px 20px; border-top:1px solid #eaeaea; }
+.stats-container {
+    max-width:1200px; margin:0 auto;
+    display:grid; grid-template-columns:repeat(4,1fr); gap:30px; text-align:center;
+}
+.stat-box h3 { font-size:44px; font-weight:800; color:#0b2240; margin-bottom:10px; }
+.stat-box p { font-size:13px; font-weight:700; color:#666; letter-spacing:1px; }
+
+@media (max-width:768px) {
+    .stats-container { grid-template-columns:repeat(2,1fr); gap:35px 20px; }
+    .stat-box h3 { font-size:30px; }
+    .stat-box p { font-size:11px; }
+}
+
+/* ============================================================
+   6. SERVICES CAROUSEL
+   ============================================================ */
+.bec-carousel-section { background:#f9f9f9; padding:60px 0; }
+.bec-container { max-width:1400px; margin:0 auto; padding:0 20px; }
+.bec-header { text-align:center; margin-bottom:40px; }
+.bec-header h2 { font-size:34px; font-weight:800; color:#0b2240; margin-bottom:5px; }
+.arabic-sub-title { font-size:20px; color:#d4af37; font-weight:700; }
+
+.carousel-container { overflow:hidden; width:100%; position:relative; }
+.carousel-track { display:flex; gap:25px; width:max-content; }
+
+.bec-card {
+    background:#fff; border-radius:12px; overflow:hidden;
+    box-shadow:0 8px 25px rgba(0,0,0,.08);
+    width:300px; flex-shrink:0; display:flex; flex-direction:column;
+    cursor:pointer; transition:transform .3s ease, box-shadow .3s ease;
+}
+.bec-card:hover { transform:translateY(-5px); box-shadow:0 8px 20px rgba(0,0,0,.15); }
+.bec-card-img img { width:100%; height:180px; object-fit:cover; display:block; }
+.bec-card-content { padding:20px; display:flex; flex-direction:column; flex-grow:1; }
+.bec-card-content h3 { font-size:16px; font-weight:800; color:#0b2240; margin-bottom:12px; line-height:1.3; }
+.en-desc { font-size:13px; color:#555; line-height:1.6; margin-bottom:12px; }
+.ar-desc { font-size:13px; color:#666; line-height:1.6; text-align:right; direction:rtl;
+           border-top:1px dashed #eee; padding-top:12px; margin-top:auto; }
+
+@media (max-width:600px) {
+    .bec-card { width:250px; }
+    .bec-header h2 { font-size:24px; }
+}
+
+/* ============================================================
+   7. MAIN SERVICES (3 cards)
+   ============================================================ */
+.services-section {
+    max-width:1200px; margin:80px auto 0 auto;
+    background:#fff; padding:60px 40px; border-radius:16px;
+    box-shadow:0 10px 30px rgba(0,0,0,.05); border:1px solid #eaeaea; text-align:center;
+}
+.services-section .services-header { margin-bottom:50px; }
+.services-section .services-header h2 {
+    font-size:34px; font-weight:800; color:#0d233a; text-transform:uppercase;
+    letter-spacing:1px; position:relative; display:inline-block; padding-bottom:12px;
+}
+.services-section .services-header h2::after {
+    content:''; position:absolute; left:50%; bottom:0; transform:translateX(-50%);
+    width:70px; height:3px; background:#c5a059; border-radius:2px;
+}
+.services-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:30px; }
+
+.service-card {
+    position:relative; height:420px; border-radius:16px; overflow:hidden;
+    box-shadow:0 10px 25px rgba(0,0,0,.15);
+    display:flex; flex-direction:column; justify-content:flex-end;
+    padding:30px; text-align:left; transition:transform .4s ease;
+}
+.service-card:hover { transform:translateY(-8px); }
+/* card ki apni <img> ko background ke upar na dikhaye — background image use ho rahi hai */
+.service-card .card-img { display:none; }
+
+.card-civil {
+    background:linear-gradient(to top, rgba(13,35,58,.95) 10%, rgba(13,35,58,.3) 70%),
+               url('po20.jpg') center/cover no-repeat;
+}
+.card-mechanical {
+    background:linear-gradient(to top, rgba(13,35,58,.95) 10%, rgba(13,35,58,.3) 70%),
+               url('po15.jpg') center/cover no-repeat;
+}
+.card-portacabin {
+    background:linear-gradient(to top, rgba(13,35,58,.95) 10%, rgba(13,35,58,.3) 70%),
+               url('splash25.jpg') center/cover no-repeat;
+}
+
+.service-card h3 {
+    font-size:20px; font-weight:700; color:#fff; margin-bottom:20px;
+    text-transform:uppercase; line-height:1.3;
+}
+.explore-btn {
+    display:inline-flex; align-items:center; justify-content:center;
+    background:#fff; color:#0d233a; padding:10px 24px; border-radius:50px;
+    font-size:13px; font-weight:700; text-decoration:none; text-transform:uppercase;
+    letter-spacing:1px; width:max-content; transition:background .3s, color .3s;
+}
+.explore-btn:hover { background:#c5a059; color:#fff; }
+
+@media (max-width:992px) {
+    .services-grid { grid-template-columns:1fr; gap:25px; }
+    .service-card { height:320px; padding:20px; }
+    .services-section { padding:40px 20px; margin-top:50px; }
+    .services-section .services-header h2 { font-size:24px; }
+}
+
+/* ============================================================
+   8. SUSTAINABILITY
+   ============================================================ */
+.sustainability-section { background:#fff; padding:80px 20px; margin-top:60px; }
+.sust-container { max-width:1200px; margin:0 auto; display:flex; align-items:center; gap:40px; }
+.sust-left { flex:1; }
+.sust-tag { font-size:13px; font-weight:700; color:#777; letter-spacing:2px; text-transform:uppercase; margin-bottom:15px; }
+.sust-left h2 { font-size:40px; font-weight:800; color:#0b2240; line-height:1.15; margin-bottom:20px; }
+.sust-left p { font-size:15px; color:#555; line-height:1.6; margin-bottom:30px; max-width:350px; }
+
+.sust-read-more, .read-more-btn {
+    display:inline-flex; align-items:center; gap:15px; background:transparent;
+    border:2px solid #0b2240; color:#0b2240; padding:10px 25px;
+    font-size:13px; font-weight:700; text-decoration:none; border-radius:30px;
+    transition:all .3s ease; margin-bottom:40px;
+}
+.sust-read-more span, .read-more-btn span {
+    background:#0b2240; color:#fff; width:28px; height:28px;
+    display:flex; align-items:center; justify-content:center; border-radius:50%;
+}
+.sust-read-more:hover, .read-more-btn:hover { background:#0b2240; color:#fff; }
+.sust-read-more:hover span, .read-more-btn:hover span { background:#fff; color:#0b2240; }
+
+.sust-badge { display:flex; align-items:center; gap:15px; }
+.sust-badge img { width:60px; height:60px; border-radius:50%; object-fit:cover; }
+.sust-badge span { font-size:11px; font-weight:700; color:#444; max-width:140px; line-height:1.3; }
+
+.sust-center-img { flex:1; text-align:center; }
+.sust-center-img img {
+    width:100%; max-width:340px; height:450px; object-fit:cover;
+    border-radius:50% 50% 50% 50% / 60% 60% 40% 40%;
+    box-shadow:0 15px 35px rgba(0,0,0,.1);
+}
+
+.sust-right { flex:1; display:flex; flex-direction:column; gap:25px; }
+.sust-feature-item { display:flex; align-items:center; gap:20px; padding-bottom:15px; border-bottom:1px solid #eaeaea; }
+.sust-feature-item:last-child { border-bottom:none; }
+.sust-icon {
+    font-size:24px; background:#f0f4f8; width:50px; height:50px;
+    display:flex; align-items:center; justify-content:center; border-radius:50%; flex-shrink:0;
+}
+.sust-text h3 { font-size:14px; font-weight:800; color:#0b2240; }
+
+@media (max-width:992px) {
+    .sust-container { flex-direction:column; text-align:center; }
+    .sust-left p { max-width:100%; }
+    .sust-badge { justify-content:center; }
+    .sust-right { width:100%; }
+    .sust-feature-item { justify-content:flex-start; text-align:left; }
+    .sust-left h2 { font-size:28px; }
+    .sust-center-img img { height:340px; }
+    .sustainability-section { padding:50px 20px; }
+}
+
+/* ============================================================
+   9. PROJECTS & EXPERIENCE (cards)
+   ============================================================ */
+.pe-wrap {
+    max-width:1200px; margin:60px auto; background:#fff; padding:40px;
+    border-radius:12px; box-shadow:0 5px 20px rgba(0,0,0,.05);
+}
+.pe-top {
+    display:flex; justify-content:space-between; align-items:flex-start;
+    border-bottom:2px solid #f0f0f0; padding-bottom:20px; margin-bottom:30px;
+    flex-wrap:wrap; gap:15px;
+}
+.pe-top h1 { font-size:26px; color:#0b2240; font-weight:800; margin-bottom:5px; }
+.pe-ar-title { font-size:14px; font-weight:bold; color:#d4af37; letter-spacing:1px; }
+.profile-badge {
+    background:#0b2240; color:#d4af37; padding:6px 15px; font-size:12px;
+    font-weight:bold; border-radius:4px; display:inline-block; margin-bottom:5px;
+}
+.pe-intro {
+    display:grid; grid-template-columns:repeat(auto-fit, minmax(260px,1fr)); gap:30px;
+    margin-bottom:40px; background:#fdfcf7; padding:20px;
+    border-left:4px solid #d4af37; border-radius:4px;
+}
+.pe-intro h3 { font-size:18px; color:#0b2240; margin-bottom:5px; }
+.pe-intro p { font-size:14px; color:#444; line-height:1.6; }
+.pe-bar {
+    background:#0b2240; color:#fff; padding:12px 20px; font-size:16px;
+    font-weight:700; border-radius:6px; margin-bottom:25px;
+}
+.pe-list { display:flex; flex-direction:column; gap:25px; margin-bottom:40px; }
+.pe-item {
+    display:flex; background:#fff; border:1px solid #e2e8f0; border-radius:10px;
+    overflow:hidden; box-shadow:0 4px 15px rgba(0,0,0,.04); flex-wrap:wrap;
+}
+.pe-num {
+    background:#0b2240; color:#d4af37; width:110px; min-width:100px;
+    display:flex; flex-direction:column; justify-content:center; align-items:center;
+    padding:20px; font-size:26px; font-weight:800; border-right:3px solid #d4af37;
+}
+.pe-num span { font-size:11px; color:#fff; margin-top:5px; letter-spacing:1px; }
+.pe-body {
+    padding:20px; flex-grow:1; display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(260px,1fr)); gap:20px; align-items:start;
+}
+.pe-body h4 { font-size:16px; color:#0b2240; font-weight:800; margin-bottom:12px; }
+.pe-line { display:flex; align-items:flex-start; gap:8px; font-size:13px; color:#555; margin-bottom:8px; }
+.pe-ar { direction:rtl; text-align:right; }
+
+.pe-stats {
+    display:grid; grid-template-columns:repeat(auto-fit, minmax(180px,1fr)); gap:15px;
+    background:#0b2240; padding:25px; border-radius:8px; color:#fff; text-align:center;
+}
+.pe-stats h3 { font-size:24px; color:#d4af37; font-weight:800; margin-bottom:5px; }
+.pe-stats p { font-size:12px; color:#ddd; }
+
+@media (max-width:768px) {
+    .pe-wrap { padding:25px 18px; margin:40px auto; border-radius:0; }
+    .pe-num { width:100%; flex-direction:row; gap:10px; border-right:none;
+              border-bottom:3px solid #d4af37; padding:12px; font-size:20px; }
+    .pe-num span { margin-top:0; }
+    .pe-body { padding:18px; }
+    .pe-top h1 { font-size:20px; }
+}
+
+/* ============================================================
+   10. ORGANIZATIONAL CHART
+   ============================================================ */
+.org-section {
+    max-width:1200px; margin:80px auto 0 auto; background:#fff;
+    padding:50px 25px; border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,.05);
+    border:1px solid #eaeaea; text-align:center;
+}
+.org-header { margin-bottom:40px; }
+.org-header h2 { font-size:30px; font-weight:800; color:#0d233a; text-transform:uppercase; }
+.org-chart { display:flex; flex-direction:column; align-items:center; gap:25px; padding:20px 0; }
+.org-node {
+    background:linear-gradient(135deg,#1b365d 0%,#0d233a 100%); color:#fff;
+    padding:14px 22px; border-radius:8px; font-size:13px; font-weight:700;
+    text-align:center; box-shadow:0 4px 15px rgba(13,35,58,.2);
+    border:1px solid #c5a059; min-width:160px;
+}
+.org-node span { display:block; font-size:10px; color:#c5a059; margin-top:2px; text-transform:uppercase; }
+.node-gm {
+    background:linear-gradient(135deg,#c5a059 0%,#a6813e 100%);
+    color:#0d233a; border-color:#0d233a; font-size:14px; padding:16px 28px;
+}
+.node-gm span { color:#0d233a; font-weight:800; }
+.org-row { display:flex; justify-content:center; gap:25px; width:100%; flex-wrap:wrap; }
+.org-row-divider { width:2px; height:25px; background:#c5a059; }
+.org-group {
+    display:flex; gap:15px; justify-content:center; flex-wrap:wrap;
+    background:#fdfdfd; border:1px dashed #d1c29b; padding:15px; border-radius:10px;
+}
+@media (max-width:768px) {
+    .org-section { padding:35px 15px; margin-top:50px; }
+    .org-row { flex-direction:column; align-items:stretch; gap:12px; }
+    .org-group { flex-direction:column; width:100%; }
+    .org-node { min-width:0; width:100%; }
+    .org-header h2 { font-size:22px; }
+}
+
+/* ============================================================
+   11. PROJECTS TABLE  ← jo mobile par cut ho raha tha
+   ============================================================ */
+.projects-wrap {
+    max-width:1200px; margin:60px auto; background:#fff; padding:30px;
+    border-radius:12px; box-shadow:0 5px 20px rgba(0,0,0,.05);
+}
+.projects-head {
+    display:flex; justify-content:space-between; align-items:flex-start;
+    border-bottom:2px solid #f0f0f0; padding-bottom:20px; margin-bottom:20px;
+    flex-wrap:wrap; gap:15px;
+}
+.projects-head h1 { font-size:24px; color:#0b2240; font-weight:800; margin-bottom:5px; }
+
+.scroll-hint { display:none; font-size:12px; color:#8a94a6; margin-bottom:12px; }
+
+.table-scroll { width:100%; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+
+.projects-table {
+    width:100%; border-collapse:collapse; min-width:900px;
+    font-size:13px; text-align:left;
+}
+.projects-table thead th {
+    background:#0b2240; color:#d4af37; padding:12px 10px;
+    border:1px solid #1a365d; text-transform:uppercase; font-size:11px; letter-spacing:.5px;
+}
+.projects-table td { padding:10px; border:1px solid #e2e8f0; vertical-align:top; color:#333; }
+.projects-table tbody tr:nth-child(even) { background:#f8fafc; }
+.projects-table td.sr {
+    background:#0b2240; color:#d4af37; text-align:center; font-weight:bold; width:60px;
+}
+.projects-table td.center { text-align:center; }
+.projects-table td.name { font-weight:600; }
+.projects-table td.scope { font-size:11px; min-width:220px; }
+.status-ongoing { color:#d97706; font-weight:bold; }
+.status-complete { color:#16a34a; font-weight:bold; }
+
+/* Mobile: table ko card layout mein convert kar diya — ab kuch cut nahi hoga */
+@media (max-width:768px) {
+    .projects-wrap { padding:22px 16px; margin:40px auto; border-radius:0; }
+    .projects-head h1 { font-size:20px; }
+    .table-scroll { overflow-x:visible; }
+    .projects-table { min-width:0; display:block; }
+    .projects-table thead { display:none; }
+    .projects-table tbody, .projects-table tr, .projects-table td { display:block; width:100%; }
+    .projects-table tr {
+        border:1px solid #e2e8f0; border-radius:10px;
+        margin-bottom:16px; overflow:hidden; background:#fff !important;
+    }
+    .projects-table td {
+        border:none; border-bottom:1px solid #f1f5f9;
+        padding:10px 14px; text-align:left !important; min-width:0;
+    }
+    .projects-table td:last-child { border-bottom:none; }
+    .projects-table td::before {
+        content:attr(data-label);
+        display:block; font-size:10px; font-weight:700; color:#94a3b8;
+        text-transform:uppercase; letter-spacing:.5px; margin-bottom:4px;
+    }
+    .projects-table td.sr { text-align:center !important; }
+    .projects-table td.sr::before { content:"Project No."; color:#d4af37; }
+    .projects-table td.scope { font-size:12px; }
+}
+
+/* ============================================================
+   12. MISSION & VISION
+   ============================================================ */
+.mission-section {
+    max-width:1200px; margin:80px auto 0 auto; background:#f8f5f5;
+    border-radius:20px; overflow:hidden; border:1px solid rgba(212,175,55,.2);
+    box-shadow:0 15px 35px rgba(0,0,0,.08);
+}
+.mission-grid { display:grid; grid-template-columns:1fr 1fr; }
+.mission-content-side { padding:50px; display:flex; flex-direction:column; justify-content:center; }
+.mission-section .section-title {
+    font-size:30px; font-weight:800; color:#b08d34; margin-bottom:30px;
+    text-transform:uppercase; border-left:4px solid #d4af37; padding-left:15px;
+}
+.mission-box { margin-bottom:30px; }
+.mission-box h3 {
+    font-size:20px; font-weight:700; color:#0a0a0a;
+    display:flex; align-items:center; gap:12px; margin-bottom:12px; text-transform:uppercase;
+}
+.mission-box h3 i { color:#d4af37; font-size:22px; }
+.mission-box p { font-size:14px; color:#333; line-height:1.8; }
+.mission-image-side { position:relative; min-height:500px; }
+.mission-image-side img { width:100%; height:100%; object-fit:cover; display:block; }
+
+@media (max-width:900px) {
+    .mission-section { margin:50px 20px 0 20px; }
+    .mission-grid { grid-template-columns:1fr; }
+    .mission-content-side { padding:30px 20px; }
+    .mission-image-side { min-height:250px; }
+    .mission-section .section-title { font-size:22px; }
+}
+
+/* ============================================================
+   13. EQUIPMENT
+   ============================================================ */
+.equipment-section {
+    max-width:1200px; margin:80px auto 0 auto; background:#faf6f6;
+    border-radius:20px; overflow:hidden; border:1px solid rgba(212,175,55,.2);
+    box-shadow:0 15px 35px rgba(0,0,0,.08);
+}
+.equipment-grid { display:grid; grid-template-columns:1.2fr .8fr; }
+.equipment-left { padding:50px; }
+.equipment-section .section-title {
+    font-size:26px; font-weight:800; color:#b08d34; margin-bottom:15px;
+    text-transform:uppercase; border-left:4px solid #d4af37; padding-left:15px;
+}
+.equipment-section .section-desc { font-size:14px; color:#333; line-height:1.7; margin-bottom:30px; }
+
+.equipment-table { width:100%; border-collapse:collapse; background:#fff; border-radius:8px; overflow:hidden; font-size:13px; }
+.equipment-table th {
+    background:#d4af37; color:#121212; text-align:left; padding:12px 15px;
+    font-weight:700; text-transform:uppercase;
+}
+.equipment-table th:last-child, .equipment-table td:last-child { text-align:center; width:90px; }
+.equipment-table td { padding:10px 15px; border-bottom:1px solid #f0f0f0; color:#222; }
+.equipment-table tr:hover { background:#fbf8f0; }
+
+.equipment-right { display:flex; flex-direction:column; gap:10px; background:#fcf4f4; padding:15px; justify-content:center; }
+.machinery-img-box { position:relative; height:140px; border-radius:10px; overflow:hidden; }
+.machinery-img-box img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .3s; }
+.machinery-img-box:hover img { transform:scale(1.05); }
+
+@media (max-width:900px) {
+    .equipment-section { margin:50px 20px 0 20px; }
+    .equipment-grid { grid-template-columns:1fr; }
+    .equipment-left { padding:30px 20px; }
+    .equipment-section .section-title { font-size:20px; }
+}
+
+/* ============================================================
+   14. DEPARTMENTS + SECTORS
+   ============================================================ */
+.departments-section { max-width:1200px; margin:80px auto 0 auto; padding:0 20px; }
+.departments-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:25px; }
+.dept-card {
+    position:relative; border-radius:16px; overflow:hidden; height:400px;
+    box-shadow:0 10px 25px rgba(0,0,0,.15); background:#1e1e1e; cursor:pointer;
+}
+.dept-card img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .5s ease; }
+.dept-card:hover img { transform:scale(1.08); }
+.dept-overlay {
+    position:absolute; inset:0; z-index:1;
+    background:linear-gradient(to top, rgba(0,0,0,.85) 0%, rgba(0,0,0,.2) 60%, transparent 100%);
+}
+.dept-content { position:absolute; bottom:25px; left:25px; right:25px; z-index:2; }
+.dept-content h3 { font-size:19px; font-weight:700; color:#fff; text-transform:uppercase; margin-bottom:15px; line-height:1.3; }
+.dept-btn {
+    display:inline-flex; align-items:center; gap:10px; background:#fff; color:#121212;
+    padding:10px 20px; border-radius:50px; text-decoration:none;
+    font-weight:700; font-size:12px; text-transform:uppercase; transition:all .3s ease;
+}
+.dept-btn:hover { background:#d4af37; color:#fff; }
+
+.innovation-section { max-width:1200px; margin:80px auto 0 auto; padding:0 20px; }
+.innovation-container { display:grid; grid-template-columns:1fr 2fr; gap:50px; align-items:flex-start; }
+.section-title-box { padding-left:20px; border-left:5px solid #c5a059; }
+.innovation-section .section-title { font-size:46px; font-weight:800; color:#121212; }
+.section-content-box .main-heading { font-size:34px; font-weight:700; color:#121212; margin-bottom:20px; line-height:1.2; }
+.innovation-section .section-desc { font-size:15px; color:#444; line-height:1.8; }
+
+@media (max-width:900px) {
+    .departments-grid { grid-template-columns:1fr; }
+    .dept-card { height:280px; }
+    .innovation-container { grid-template-columns:1fr; gap:25px; }
+    .innovation-section .section-title { font-size:32px; }
+    .section-content-box .main-heading { font-size:24px; }
+}
+
+/* ============================================================
+   15. EXPERIENCE / STATS GRID
+   ============================================================ */
+.experience-section { max-width:1000px; margin:80px auto 0 auto; padding:0 20px; }
+.exp-header { margin-bottom:40px; }
+.exp-header h2 { font-size:36px; font-weight:800; color:#0d233a; text-transform:uppercase; line-height:1.2; }
+.exp-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:22px; align-items:center; }
+
+.hex-card {
+    width:100%; max-width:180px; height:110px; margin:0 auto;
+    background:linear-gradient(135deg,#0d233a 0%,#1b3d6d 100%); color:#fff;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center; padding:15px;
+    clip-path:polygon(25% 0%,75% 0%,100% 50%,75% 100%,25% 100%,0% 50%);
+    transition:transform .3s ease; cursor:pointer;
+}
+.hex-card:hover { transform:scale(1.05); }
+.hex-card i { font-size:20px; margin-bottom:6px; opacity:.9; }
+.hex-card h3 { font-size:26px; font-weight:800; margin-bottom:4px; }
+.hex-card p { font-size:10px; font-weight:700; color:#d4af37; text-transform:uppercase; max-width:130px; line-height:1.2; }
+
+.stat-card {
+    background:#f8f9fa; height:110px; padding:15px; border-radius:12px;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center; border:1px solid #eaeaea; transition:transform .3s ease;
+}
+.stat-card:hover { transform:translateY(-5px); }
+.stat-card i { font-size:20px; color:#0d233a; margin-bottom:6px; }
+.stat-card h3 { font-size:26px; font-weight:800; color:#0d233a; margin-bottom:4px; }
+.stat-card p { font-size:10px; font-weight:700; color:#555; text-transform:uppercase; line-height:1.2; }
+
+@media (max-width:1024px) { .exp-grid { grid-template-columns:repeat(2,1fr); } }
+@media (max-width:600px) {
+    .exp-grid { grid-template-columns:repeat(2,1fr); gap:15px; }
+    .exp-header h2 { font-size:24px; }
+    .hex-card, .stat-card { height:105px; }
+}
+
+/* ============================================================
+   16. POLICIES
+   ============================================================ */
+.policy-section {
+    max-width:1200px; margin:80px auto 0 auto; background:#fff; border-radius:16px;
+    box-shadow:0 10px 30px rgba(0,0,0,.05); overflow:hidden; border:1px solid #eaeaea;
+}
+.policy-header {
+    background:linear-gradient(135deg,#0d233a 0%,#1b3d6d 100%); color:#fff; padding:35px 30px;
+    display:flex; justify-content:space-between; align-items:center; border-bottom:4px solid #c5a059;
+}
+.policy-header h2 { font-size:28px; font-weight:800; text-transform:uppercase; }
+.policy-header .arabic-title { font-size:24px; font-weight:700; direction:rtl; }
+.policy-body { padding:35px 30px; display:flex; flex-direction:column; gap:35px; }
+.policy-card {
+    display:grid; grid-template-columns:1fr 1fr; gap:30px;
+    padding-bottom:30px; border-bottom:1px solid #eee; align-items:start;
+}
+.policy-card:last-child { border-bottom:none; padding-bottom:0; }
+.policy-content-en { padding-right:20px; border-right:2px solid #f0f0f0; }
+.policy-title-wrapper, .policy-title-wrapper-ar { display:flex; align-items:center; gap:15px; margin-bottom:15px; }
+.policy-title-wrapper-ar { justify-content:flex-end; }
+.policy-title-wrapper i, .policy-title-wrapper-ar i {
+    font-size:22px; color:#c5a059; background:#fdf8ee; padding:12px; border-radius:50%;
+}
+.policy-title-wrapper h3, .policy-title-wrapper-ar h3 { font-size:20px; font-weight:700; color:#0d233a; text-transform:uppercase; }
+.policy-content-en p { font-size:14px; line-height:1.7; color:#555; }
+.policy-content-ar { text-align:right; direction:rtl; padding-left:10px; }
+.policy-content-ar p { font-size:15px; line-height:1.8; color:#555; }
+
+@media (max-width:900px) {
+    .policy-section { margin:50px 20px 0 20px; }
+    .policy-card { grid-template-columns:1fr; gap:20px; }
+    .policy-content-en { border-right:none; border-bottom:1px solid #eee; padding-right:0; padding-bottom:20px; }
+    .policy-header { flex-direction:column; gap:12px; text-align:center; padding:25px 20px; }
+    .policy-header h2 { font-size:22px; }
+    .policy-body { padding:25px 20px; }
+}
+
+/* ============================================================
+   17. VIDEO
+   ============================================================ */
+.video-section { max-width:1200px; margin:80px auto 0 auto; padding:0 20px; text-align:center; }
+.video-header { margin-bottom:30px; }
+.video-header h2 { font-size:32px; font-weight:800; color:#0d233a; text-transform:uppercase; margin-bottom:10px; }
+.video-header p { font-size:15px; color:#555; }
+.video-box {
+    position:relative; width:100%; max-width:420px; height:520px; margin:0 auto;
+    border-radius:20px; overflow:hidden; box-shadow:0 15px 35px rgba(0,0,0,.2);
+    background:#0d233a; border:4px solid #0d233a;
+}
+.video-box video { width:100%; height:100%; object-fit:cover; display:block; }
+
+@media (max-width:500px) {
+    .video-box { max-width:100%; height:420px; }
+    .video-header h2 { font-size:22px; }
+}
+
+/* ============================================================
+   18. MOVING PROJECT CARDS (marquee)
+   ============================================================ */
+.moving-section { max-width:1300px; margin:80px auto 0 auto; padding:0 20px; text-align:center; }
+.section-header { margin-bottom:35px; }
+.section-header h2 { font-size:32px; font-weight:800; color:#0d233a; text-transform:uppercase; margin-bottom:10px; }
+.section-header p { font-size:15px; color:#555; }
+
+.marquee-container { width:100%; overflow:hidden; position:relative; padding:20px 0; }
+.marquee-track { display:flex; gap:20px; width:max-content; animation:scrollCards 25s linear infinite; }
+.marquee-container:hover .marquee-track { animation-play-state:paused; }
+
+.project-card {
+    width:230px; height:280px; background:#fff; border-radius:12px; overflow:hidden;
+    box-shadow:0 8px 20px rgba(0,0,0,.1); border:1px solid #eaeaea;
+    flex-shrink:0; display:flex; flex-direction:column; transition:transform .3s ease;
+}
+.project-card:hover { transform:translateY(-8px); }
+.card-img-box { width:100%; height:100%; overflow:hidden; }
+.card-img-box img { width:100%; height:100%; object-fit:cover; transition:transform .5s ease; }
+.project-card:hover .card-img-box img { transform:scale(1.1); }
+
+@keyframes scrollCards {
+    0%   { transform:translateX(0); }
+    100% { transform:translateX(calc(-230px * 4 - 20px * 4)); }
+}
+
+@media (max-width:768px) {
+    .project-card { width:190px; height:230px; }
+    .section-header h2 { font-size:22px; }
+    @keyframes scrollCards {
+        0%   { transform:translateX(0); }
+        100% { transform:translateX(calc(-190px * 4 - 20px * 4)); }
+    }
+}
+
+/* ============================================================
+   19. VAT CERTIFICATE  (alag class — pehle .cert-card do jagah clash kar raha tha)
+   ============================================================ */
+.vat-section { max-width:900px; margin:80px auto 0 auto; padding:0 20px; }
+.vat-card {
+    background:#fff; border-radius:16px; box-shadow:0 15px 35px rgba(0,0,0,.08);
+    border:2px solid #1b4d3e; overflow:hidden;
+}
+.vat-header {
+    background:linear-gradient(135deg,#1b4d3e 0%,#2e7d32 100%); color:#fff;
+    padding:22px 25px; display:flex; justify-content:space-between; align-items:center; gap:12px;
+}
+.vat-header h3 { font-size:18px; font-weight:800; text-transform:uppercase; }
+.vat-header .arabic-header { font-size:17px; font-weight:700; direction:rtl; }
+.vat-body { padding:30px 25px; }
+.vat-intro { text-align:center; margin-bottom:28px; font-size:13px; color:#555; line-height:1.6; }
+.vat-details { display:flex; flex-direction:column; gap:20px; }
+.vat-row {
+    display:grid; grid-template-columns:1fr 1fr; gap:20px;
+    padding-bottom:15px; border-bottom:1px solid #f0f0f0; align-items:center;
+}
+.vat-row:last-child { border-bottom:none; padding-bottom:0; }
+.vat-row .label { font-size:11px; font-weight:700; color:#777; text-transform:uppercase; margin-bottom:4px; }
+.vat-row .value { font-size:14px; font-weight:700; color:#0d233a; word-break:break-word; }
+.vat-row .ar { text-align:right; direction:rtl; }
+.vat-footer {
+    background:#f8f9fa; padding:15px 25px; text-align:center;
+    font-size:11px; color:#666; border-top:1px solid #eaeaea; direction:rtl;
+}
+@media (max-width:768px) {
+    .vat-row { grid-template-columns:1fr; gap:10px; }
+    .vat-header { flex-direction:column; text-align:center; }
+}
+
+/* ============================================================
+   20. COMMERCIAL REGISTRATION
+   ============================================================ */
+.commercial-section {
+    max-width:1000px; margin:80px auto 0 auto; background:#fff; padding:45px 35px;
+    border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,.05); border:1px solid #eaeaea;
+}
+.comm-header { text-align:center; margin-bottom:22px; }
+.comm-header h2 { font-size:30px; font-weight:800; color:#0d233a; text-transform:uppercase; margin-bottom:8px; }
+.comm-header .arabic-title { font-size:24px; font-weight:700; color:#0d233a; direction:rtl; }
+.comm-desc { text-align:center; margin-bottom:35px; font-size:14px; color:#555; line-height:1.6; }
+.comm-desc .ar-desc {
+    font-size:15px; direction:rtl; margin-top:5px; color:#666;
+    text-align:center; border:none; padding:0;
+}
+.cert-document { background:#fff; border:2px solid #004d40; border-radius:12px; padding:30px; }
+.doc-top-header {
+    display:flex; justify-content:space-between; align-items:center; gap:15px;
+    border-bottom:2px solid #f0f0f0; padding-bottom:20px; margin-bottom:28px; flex-wrap:wrap;
+}
+.doc-top-header h3 { font-size:20px; font-weight:700; color:#0d233a; text-align:right; }
+.ministry-logo-text { font-size:14px; font-weight:600; color:#004d40; display:flex; align-items:center; gap:8px; }
+.doc-body-grid { display:grid; grid-template-columns:240px 1fr; gap:35px; align-items:center; }
+.qr-box { text-align:center; background:#fdfdfd; border:1px dashed #ccc; padding:20px; border-radius:10px; }
+.qr-box img { width:150px; height:150px; object-fit:contain; margin-bottom:10px; }
+.qr-box .qr-label { font-size:12px; font-weight:700; color:#555; direction:rtl; }
+.cr-number-bottom { font-size:13px; font-weight:700; color:#0d233a; margin-top:5px; letter-spacing:1px; }
+.details-list { display:flex; flex-direction:column; gap:16px; text-align:right; direction:rtl; }
+.detail-item {
+    display:flex; justify-content:space-between; align-items:center; gap:12px;
+    border-bottom:1px solid #f5f5f5; padding-bottom:12px; flex-wrap:wrap;
+}
+.detail-item:last-child { border-bottom:none; padding-bottom:0; }
+.detail-item .label-ar { font-size:14px; font-weight:600; color:#777; }
+.detail-item .value-ar { font-size:15px; font-weight:700; color:#0d233a; }
+.status-active { color:#2e7d32 !important; background:#e8f5e9; padding:4px 12px; border-radius:20px; font-size:13px !important; }
+
+@media (max-width:768px) {
+    .commercial-section { margin:50px 20px 0 20px; padding:28px 18px; }
+    .doc-body-grid { grid-template-columns:1fr; gap:22px; }
+    .cert-document { padding:20px 15px; }
+    .comm-header h2 { font-size:22px; }
+}
+
+/* ============================================================
+   21. ABOUT COMPANY
+   ============================================================ */
+.about-company-section {
+    max-width:1200px; margin:80px auto 0 auto; background:#fff; padding:55px 40px;
+    border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,.05); border:1px solid #eaeaea;
+}
+.about-grid { display:grid; grid-template-columns:1fr 1fr; gap:45px; align-items:center; }
+.about-subtitle { font-size:14px; font-weight:700; color:#004d40; letter-spacing:2px; text-transform:uppercase; margin-bottom:8px; }
+.about-text-content h2 { font-size:34px; font-weight:800; color:#0d233a; text-transform:uppercase; margin-bottom:22px; line-height:1.2; }
+.about-text-content p { font-size:15px; line-height:1.8; color:#555; margin-bottom:18px; }
+.about-images-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:15px; height:380px; }
+.about-img-box { border-radius:10px; overflow:hidden; box-shadow:0 8px 20px rgba(0,0,0,.1); height:100%; }
+.about-img-box img { width:100%; height:100%; object-fit:cover; transition:transform .5s ease; }
+.about-img-box:hover img { transform:scale(1.08); }
+
+@media (max-width:900px) {
+    .about-company-section { margin:50px 20px 0 20px; padding:35px 20px; }
+    .about-grid { grid-template-columns:1fr; gap:30px; }
+    .about-images-grid { height:200px; gap:10px; }
+    .about-text-content h2 { font-size:24px; }
+}
+
+/* ============================================================
+   22. CERTIFICATES GRID
+   ============================================================ */
+.certificates-section { max-width:1200px; margin:80px auto 0 auto; padding:0 20px; }
+.sec-header { text-align:center; margin-bottom:35px; }
+.sec-header h2 { font-size:30px; font-weight:800; color:#0d233a; text-transform:uppercase; margin-bottom:5px; }
+.sec-header .ar-title { font-size:22px; font-weight:700; color:#555; direction:rtl; }
+.certificates-grid { display:grid; grid-template-columns:1fr 1fr; gap:30px; }
+
+.cert-card {
+    background:#fff; border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,.08);
+    border:1px solid #eaeaea; overflow:hidden;
+    display:flex; flex-direction:column; justify-content:space-between;
+}
+.cert-card-header {
+    background:linear-gradient(135deg,#0d233a 0%,#1b3d6d 100%); color:#fff;
+    padding:18px 22px; display:flex; justify-content:space-between; align-items:center;
+    gap:10px; border-bottom:3px solid #c5a059; flex-wrap:wrap;
+}
+.cert-card-header h3 { font-size:15px; font-weight:800; text-transform:uppercase; }
+.cert-card-header .ar-header { font-size:15px; font-weight:700; direction:rtl; }
+.cert-card-body { padding:22px; flex-grow:1; }
+.cert-row {
+    display:flex; justify-content:space-between; align-items:center; gap:12px;
+    padding-bottom:12px; margin-bottom:12px; border-bottom:1px solid #f0f0f0; flex-wrap:wrap;
+}
+.cert-row:last-child { border-bottom:none; margin-bottom:0; padding-bottom:0; }
+.info-en .label, .info-ar .label { font-size:10px; font-weight:700; color:#777; text-transform:uppercase; margin-bottom:2px; }
+.info-en .value, .info-ar .value { font-size:13px; font-weight:700; color:#0d233a; }
+.info-ar { text-align:right; direction:rtl; }
+.cert-card-footer {
+    background:#f8f9fa; padding:12px 22px; text-align:center; font-size:11px;
+    color:#666; border-top:1px solid #eaeaea; direction:rtl;
+}
+@media (max-width:900px) {
+    .certificates-grid { grid-template-columns:1fr; gap:22px; }
+    .sec-header h2 { font-size:22px; }
+}
+
+/* ============================================================
+   23. BANK STATEMENT
+   ============================================================ */
+.statement-section {
+    max-width:1000px; margin:80px auto 0 auto; background:#fff; padding:35px;
+    border-radius:12px; box-shadow:0 15px 35px rgba(0,0,0,.08); border:1px solid #eaeaea;
+}
+.stmt-header {
+    display:flex; justify-content:space-between; align-items:center; gap:15px;
+    border-bottom:2px solid #0d233a; padding-bottom:15px; margin-bottom:25px; flex-wrap:wrap;
+}
+.stmt-title-group h3 { font-size:18px; font-weight:800; color:#0d233a; text-transform:uppercase; }
+.stmt-title-group .ar-title { font-size:16px; font-weight:700; color:#555; direction:rtl; }
+.stmt-bank-logo { font-size:24px; font-weight:800; color:#1b3d6d; letter-spacing:-1px; }
+.stmt-subbar {
+    background:#0d233a; color:#fff; padding:8px 15px; font-size:13px; font-weight:700;
+    display:flex; justify-content:space-between; align-items:center; gap:10px;
+    margin-bottom:15px; border-radius:4px;
+}
+.stmt-info-box {
+    display:grid; grid-template-columns:1fr 1fr; gap:20px; background:#fdfdfd;
+    border:1px solid #e0e0e0; padding:20px; border-radius:6px; margin-bottom:25px;
+}
+.info-col-en .lbl, .info-col-ar .lbl { font-size:11px; font-weight:700; color:#777; text-transform:uppercase; }
+.info-col-en .val, .info-col-ar .val { font-size:13px; font-weight:700; color:#0d233a; margin-top:2px; line-height:1.4; word-break:break-word; }
+.info-col-ar { text-align:right; direction:rtl; }
+
+.stmt-table { width:100%; border-collapse:collapse; font-size:13px; min-width:620px; }
+.stmt-table th {
+    background:#f4f6f8; color:#0d233a; padding:10px 12px; font-weight:700;
+    border-bottom:2px solid #ddd; text-align:left; white-space:nowrap;
+}
+.stmt-table th.ar, .stmt-table td.ar { text-align:right; direction:rtl; }
+.stmt-table td { padding:12px; border-bottom:1px solid #eee; color:#333; }
+
+@media (max-width:768px) {
+    .statement-section { margin:50px 20px 0 20px; padding:20px 16px; }
+    .stmt-info-box { grid-template-columns:1fr; gap:15px; }
+}
+
+/* ============================================================
+   24. WHY QASWAAH
+   ============================================================ */
+.why-section {
+    max-width:1200px; margin:80px auto 0 auto; background:#fff; padding:55px 40px;
+    border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,.05); border:1px solid #eaeaea;
+}
+.why-header { text-align:center; margin-bottom:15px; }
+.why-header h2 { font-size:32px; font-weight:800; color:#0d233a; text-transform:uppercase; margin-bottom:5px; }
+.why-header .ar-title { font-size:26px; font-weight:700; color:#c5a059; direction:rtl; }
+.why-intro { text-align:center; max-width:800px; margin:0 auto 45px auto; font-size:15px; color:#555; line-height:1.6; }
+.why-intro .ar-intro { font-size:15px; color:#666; direction:rtl; margin-top:5px; }
+.why-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:25px; }
+.why-card {
+    background:#fdfdfd; border:1px solid #eaeaea; border-radius:12px; padding:22px;
+    display:flex; align-items:flex-start; gap:18px; transition:all .3s ease;
+}
+.why-card:hover { transform:translateY(-5px); box-shadow:0 8px 25px rgba(0,0,0,.08); border-color:#c5a059; }
+.why-icon {
+    background:#0d233a; color:#c5a059; width:52px; height:52px; border-radius:10px;
+    display:flex; align-items:center; justify-content:center; font-size:20px; flex-shrink:0;
+}
+.why-content h3 { font-size:16px; font-weight:700; color:#0d233a; margin-bottom:6px; }
+.why-content p { font-size:13px; color:#666; line-height:1.5; margin-bottom:8px; }
+.why-content .ar-text { font-size:13px; color:#555; direction:rtl; line-height:1.5; text-align:right; }
+
+@media (max-width:900px) {
+    .why-section { margin:50px 20px 0 20px; padding:30px 18px; }
+    .why-grid { grid-template-columns:1fr; }
+    .why-header h2 { font-size:24px; }
+}
+
+/* ============================================================
+   25. FOOTER
+   ============================================================ */
+.qaswa-footer {
+    width:100%; max-width:1200px; margin:60px auto 0 auto; background:#fff;
+    padding:40px 20px; box-shadow:0 10px 30px rgba(0,0,0,.05);
+    border-top:1px solid #eaeaea; text-align:center; overflow:hidden;
+}
+@media (min-width:768px) {
+    .qaswa-footer { border-radius:16px; padding:60px 40px; margin:80px auto 0 auto; }
+}
+.footer-brand { margin-bottom:25px; }
+.footer-logo-icon { font-size:34px; color:#c5a059; margin-bottom:8px; }
+.footer-brand h2 { font-size:24px; font-weight:800; color:#0d233a; letter-spacing:1.5px; text-transform:uppercase; }
+.footer-brand p { font-size:13px; color:#555; margin-top:4px; }
+.footer-brand .ar-sub { font-size:14px; font-weight:600; color:#666; direction:rtl; margin-top:2px; }
+
+.thank-you-box { margin:32px 0; display:flex; justify-content:center; align-items:center; gap:20px; flex-wrap:wrap; }
+.thank-you-box h3 { font-size:34px; color:#c5a059; font-weight:600; font-style:italic; }
+.thank-you-box .divider-line { width:2px; height:35px; background:#ddd; }
+.thank-you-box .ar-thanks { font-size:26px; font-weight:700; color:#0d233a; direction:rtl; }
+
+.footer-tagline { margin-bottom:35px; }
+.footer-tagline .en-tag { font-size:16px; font-weight:700; color:#0d233a; letter-spacing:1px; text-transform:uppercase; }
+.footer-tagline .ar-tag { font-size:16px; font-weight:700; color:#555; direction:rtl; margin-top:5px; }
+
+.footer-contact-wrapper {
+    max-width:900px; margin:0 auto 35px auto; background:#fdfdfd;
+    border:1px solid #eaeaea; border-radius:12px; padding:25px 20px;
+}
+.contact-heading {
+    font-size:14px; font-weight:800; letter-spacing:3px; color:#c5a059;
+    text-transform:uppercase; margin-bottom:22px;
+    display:flex; align-items:center; justify-content:center; gap:10px;
+}
+.contact-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:20px; text-align:left; }
+.contact-item { display:flex; align-items:center; gap:15px; }
+.contact-icon-box {
+    background:#0d233a; color:#c5a059; width:40px; height:40px; border-radius:8px;
+    display:flex; align-items:center; justify-content:center; font-size:16px; flex-shrink:0;
+}
+.contact-details span { display:block; font-size:13px; font-weight:600; color:#333; word-break:break-word; }
+.contact-full-row {
+    margin-top:20px; padding-top:20px; border-top:1px solid #eee;
+    display:flex; justify-content:center; flex-wrap:wrap; gap:20px; text-align:center;
+}
+.full-row-item { display:flex; align-items:center; gap:12px; font-size:13px; font-weight:600; color:#333; }
+
+.footer-partner-box {
+    background:linear-gradient(135deg,#fdfbf7 0%,#f4f0e6 100%);
+    border:1px solid #e6dccb; border-radius:10px; padding:20px;
+    display:flex; align-items:center; justify-content:space-between; gap:20px; text-align:left;
+}
+.partner-left { display:flex; align-items:center; gap:15px; }
+.partner-left i { font-size:26px; color:#c5a059; }
+.partner-text-en { font-size:13px; font-weight:700; color:#0d233a; line-height:1.4; }
+.partner-text-ar { font-size:13px; font-weight:700; color:#555; direction:rtl; text-align:right; line-height:1.4; }
+
+@media (max-width:768px) {
+    .contact-grid { grid-template-columns:1fr; }
+    .footer-partner-box { flex-direction:column; text-align:center; }
+    .partner-left { flex-direction:column; }
+    .partner-text-ar { text-align:center; }
+    .thank-you-box h3 { font-size:26px; }
+    .thank-you-box .ar-thanks { font-size:20px; }
+}
+
+/* ============================================================
+   26. ANIMATIONS
+   ============================================================ */
+
+/* --- Scroll reveal (JS se .is-visible lagti hai) --- */
+.reveal {
+    opacity:0;
+    transform:translateY(32px);
+    transition:opacity .7s cubic-bezier(.2,.7,.3,1), transform .7s cubic-bezier(.2,.7,.3,1);
+    will-change:opacity, transform;
+}
+.reveal.is-visible { opacity:1; transform:none; }
+
+/* Alag directions */
+.reveal-left  { transform:translateX(-40px); }
+.reveal-right { transform:translateX(40px); }
+.reveal-zoom  { transform:scale(.94); }
+.reveal-left.is-visible, .reveal-right.is-visible, .reveal-zoom.is-visible { transform:none; }
+
+/* Stagger — grid/list ke andar ke items thore thore der se aate hain */
+.reveal-d1 { transition-delay:.08s; }
+.reveal-d2 { transition-delay:.16s; }
+.reveal-d3 { transition-delay:.24s; }
+.reveal-d4 { transition-delay:.32s; }
+.reveal-d5 { transition-delay:.40s; }
+.reveal-d6 { transition-delay:.48s; }
+
+/* --- Hero text entrance --- */
+.slide.active .slide-content h1 { animation:heroUp .9s cubic-bezier(.2,.7,.3,1) both; }
+.slide.active .slide-content p  { animation:heroUp .9s cubic-bezier(.2,.7,.3,1) .18s both; }
+@keyframes heroUp {
+    from { opacity:0; transform:translateY(26px); }
+    to   { opacity:1; transform:none; }
+}
+
+/* --- Section heading ke neeche wali line draw hoti hui --- */
+.services-section .services-header h2::after { width:0; transition:width .6s ease .25s; }
+.services-section .services-header.is-visible h2::after { width:70px; }
+
+/* --- Org chart ki connector line grow --- */
+.org-row-divider { height:0; transition:height .4s ease; }
+.org-row-divider.is-visible { height:25px; }
+
+/* --- Stat numbers count-up ke dauran jump na karein --- */
+.stat-box h3, .pe-stats h3 { font-variant-numeric:tabular-nums; }
+
+/* --- Hover par zara sa lift (already kuch cards par tha, ab consistent) --- */
+.bec-card, .service-card, .dept-card, .why-card, .cert-card, .stat-card, .hex-card, .pe-item {
+    transition:transform .35s ease, box-shadow .35s ease, opacity .7s ease;
+}
+.pe-item:hover { transform:translateY(-4px); box-shadow:0 10px 28px rgba(0,0,0,.09); }
+.cert-card:hover { transform:translateY(-4px); box-shadow:0 14px 34px rgba(0,0,0,.12); }
+
+/* --- Buttons/links par halka feedback --- */
+.explore-btn:hover, .dept-btn:hover { transform:translateY(-2px); }
+.explore-btn, .dept-btn { transition:background .3s, color .3s, transform .3s; }
+
+/* --- Keyboard focus visible rahe --- */
+a:focus-visible, button:focus-visible {
+    outline:3px solid #c5a059; outline-offset:3px; border-radius:4px;
+}
+
+/* --- Reduced motion: sab band --- */
+@media (prefers-reduced-motion: reduce) {
+    .marquee-track { animation:none; }
+    .reveal, .reveal-left, .reveal-right, .reveal-zoom {
+        opacity:1 !important; transform:none !important; transition:none !important;
+    }
+    .slide.active .slide-content h1,
+    .slide.active .slide-content p { animation:none; }
+    .org-row-divider { height:25px; }
+    .services-section .services-header h2::after { width:70px; }
+    * { transition:none !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header>
+    <div class="nav-container">
+        <div class="logo">QASWAAH</div>
+        <button class="nav-toggle" id="navToggle" aria-label="Open menu"><i class="fa-solid fa-bars"></i></button>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#departments">Divisions</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#sustainability">Sustainability</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </div>
+</header>
+
+<!-- ===== HERO SLIDER ===== -->
+<section class="hero-slider-section">
+    <div class="slider-container">
+        <div class="slide active">
+            <img src="po18.png" alt="Qaswaah project site">
+            <div class="slide-content"></div>
+        </div>
+        <div class="slide">
+            <img src="splash.jpg" alt="Construction works">
+            <div class="slide-content">
+                <h1>Building the future</h1>
+                <p>Excellence in engineering and construction across Saudi Arabia</p>
+            </div>
+        </div>
+        <div class="slide">
+            <img src="splash2.jpg" alt="Engineering works">
+            <div class="slide-content">
+                <h1>Innovation and quality</h1>
+                <p>Delivering world-class projects with the highest standards</p>
+            </div>
+        </div>
+
+        <button class="slider-btn prev-btn" onclick="moveSlide(-1)" aria-label="Previous slide">&#10094;</button>
+        <button class="slider-btn next-btn" onclick="moveSlide(1)" aria-label="Next slide">&#10095;</button>
+
+        <div class="slider-dots">
+            <span class="dot active" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+        </div>
+    </div>
+</section>
+
+<!-- ===== OVERVIEW ===== -->
+<section class="overview-section" id="about">
+    <div class="overview-image">
+        <img src="splash3.jpg" alt="Overview">
+    </div>
+    <div class="overview-content">
+        <div class="overview-tag">Overview</div>
+        <h2>Think big.<br>Build better.</h2>
+        <p>Qaswaah Arabia has emerged as one of the construction industry's leading players. Established in the United Arab Emirates (UAE) in 2000 and the Kingdom of Saudi Arabia (KSA) in 2010, the company has transformed into a dynamic regional organization, offering turnkey projects comprising civil construction, electromechanical works, infrastructure, landscaping, engineering services, and more.</p>
+    </div>
+</section>
+
+<!-- ===== STATS ===== -->
+<section class="stats-services-section">
+    <div class="stats-container">
+        <div class="stat-box"><h3>25+</h3><p>Years of experience</p></div>
+        <div class="stat-box"><h3>10K+</h3><p>Talented professionals</p></div>
+        <div class="stat-box"><h3>120+</h3><p>Projects delivered</p></div>
+        <div class="stat-box"><h3>600+</h3><p>Engineers &amp; technicians</p></div>
+    </div>
+</section>
+
+<!-- ===== SERVICES CAROUSEL ===== -->
+<section class="bec-carousel-section" id="services">
+    <div class="bec-container">
+        <div class="bec-header">
+            <h2>Our services &amp; capabilities</h2>
+            <p class="arabic-sub-title">خدماتنا وقدراتنا</p>
+        </div>
+
+        <div class="carousel-container" id="servicesCarousel">
+            <div class="carousel-track">
+
+                <div class="bec-card" onclick="location.href='general.html'">
+                    <div class="bec-card-img"><img src="splash4.jpg" alt="General contracting"></div>
+                    <div class="bec-card-content">
+                        <h3>General contracting</h3>
+                        <p class="en-desc">We execute all types of construction projects including buildings and infrastructure.</p>
+                        <p class="ar-desc">تنفيذ جميع أنواع المشاريع الإنشائية والمباني والبنية التحتية.</p>
+                    </div>
+                </div>
+
+                <div class="bec-card" onclick="location.href='manpower.html'">
+                    <div class="bec-card-img"><img src="splash12.jpg" alt="Manpower supply"></div>
+                    <div class="bec-card-content">
+                        <h3>Manpower supply</h3>
+                        <p class="en-desc">We supply skilled, semi-skilled and unskilled manpower for various projects.</p>
+                        <p class="ar-desc">نوفر عمالة مدربة وشبه مدربة وعمالة عامة لمختلف المشاريع.</p>
+                    </div>
+                </div>
+
+                <div class="bec-card" onclick="location.href='cleaning.html'">
+                    <div class="bec-card-img"><img src="splash5.jpg" alt="Cleaning services"></div>
+                    <div class="bec-card-content">
+                        <h3>Cleaning services</h3>
+                        <p class="en-desc">Professional cleaning services for commercial, residential and industrial facilities.</p>
+                        <p class="ar-desc">نقدم خدمات نظافة احترافية للمباني التجارية والصناعية.</p>
+                    </div>
+                </div>
+
+                <div class="bec-card" onclick="location.href='maintenance.html'">
+                    <div class="bec-card-img"><img src="splash6.jpg" alt="Maintenance services"></div>
+                    <div class="bec-card-content">
+                        <h3>Maintenance services</h3>
+                        <p class="en-desc">Comprehensive maintenance solutions for buildings, electrical and mechanical systems.</p>
+                        <p class="ar-desc">حلول صيانة متكاملة للمباني والأنظمة الكهربائية والميكانيكية.</p>
+                    </div>
+                </div>
+
+                <div class="bec-card" onclick="location.href='porta.html'">
+                    <div class="bec-card-img"><img src="splash7.jpg" alt="Porta cabins"></div>
+                    <div class="bec-card-content">
+                        <h3>Porta cabins</h3>
+                        <p class="en-desc">Design, manufacture and installation of porta cabins and customized rooms.</p>
+                        <p class="ar-desc">تصميم وتصنيع وتوريد وتركيب غرف جاهزة ووحدات مخصصة.</p>
+                    </div>
+                </div>
+
+                <div class="bec-card" onclick="location.href='catering.html'">
+                    <div class="bec-card-img"><img src="splash8.jpg" alt="Catering services"></div>
+                    <div class="bec-card-content">
+                        <h3>Catering services</h3>
+                        <p class="en-desc">Nutritious and hygienic meal solutions for workers camps and hotels.</p>
+                        <p class="ar-desc">تقديم وجبات غذائية صحية ومتكاملة لمخيمات العمال والفنادق.</p>
+                    </div>
+                </div>
+
+                <div class="bec-card" onclick="location.href='transport.html'">
+                    <div class="bec-card-img"><img src="splash9.jpg" alt="Transport services"></div>
+                    <div class="bec-card-content">
+                        <h3>Transport services</h3>
+                        <p class="en-desc">Safe and reliable transport solutions for personnel and logistics support.</p>
+                        <p class="ar-desc">توفير حلول نقل آمنة وموثوقة للموظفين والدعم اللوجستي.</p>
+                    </div>
+                </div>
+
+                <div class="bec-card" onclick="location.href='operations.html'">
+                    <div class="bec-card-img"><img src="splash10.jpg" alt="Operations support"></div>
+                    <div class="bec-card-content">
+                        <h3>Operations &amp; support</h3>
+                        <p class="en-desc">We provide operations and support services for continuous business functioning.</p>
+                        <p class="ar-desc">نقدم خدمات التشغيل والدعم لضمان استمرارية أعمالك.</p>
+                    </div>
+                </div>
+
+                <div class="bec-card" onclick="location.href='hse.html'">
+                    <div class="bec-card-img"><img src="splash11.jpg" alt="Health, safety and environment"></div>
+                    <div class="bec-card-content">
+                        <h3>Health, safety &amp; environment</h3>
+                        <p class="en-desc">We strictly follow HSE standards to ensure safety of people and assets.</p>
+                        <p class="ar-desc">نلتزم بمعايير الصحة والسلامة والبيئة لضمان سلامة الأفراد والأصول.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== MAIN SERVICES (3 CARDS) ===== -->
+<section class="services-section">
+    <div class="services-header">
+        <h2>Our main services</h2>
+    </div>
+
+    <div class="services-grid">
+        <div class="service-card card-civil">
+            <h3>Civil construction department</h3>
+            <a href="civil.html" class="explore-btn">Explore</a>
+        </div>
+
+        <div class="service-card card-mechanical">
+            <h3>Mechanical services department</h3>
+            <a href="mechanical.html" class="explore-btn">Explore</a>
+        </div>
+
+        <div class="service-card card-portacabin">
+            <h3>Porta cabins &amp; prefab solutions</h3>
+            <a href="porta.html" class="explore-btn">Explore</a>
+        </div>
+    </div>
+</section>
+
+<!-- ===== SUSTAINABILITY ===== -->
+<section class="sustainability-section" id="sustainability">
+    <div class="sust-container">
+        <div class="sust-left">
+            <div class="sust-tag">Sustainability</div>
+            <h2>Toward a<br>sustainable<br>future</h2>
+            <p>Innovating construction solutions to shape a greener, more equitable world.</p>
+            <a href="#" class="sust-read-more">Read more <span>&rarr;</span></a>
+
+            <div class="sust-badge">
+                <img src="splash13.jpg" alt="U.S. Green Building Council">
+                <span>U.S. Green Building Council member</span>
+            </div>
+        </div>
+
+        <div class="sust-center-img">
+            <img src="splash13.jpg" alt="Sustainable future building">
+        </div>
+
+        <div class="sust-right">
+            <div class="sust-feature-item">
+                <div class="sust-icon">🌿</div>
+                <div class="sust-text"><h3>Sustainable materials</h3></div>
+            </div>
+            <div class="sust-feature-item">
+                <div class="sust-icon">⚡</div>
+                <div class="sust-text"><h3>Smart &amp; digital solutions</h3></div>
+            </div>
+            <div class="sust-feature-item">
+                <div class="sust-icon">🔄</div>
+                <div class="sust-text"><h3>Maximizing resource utilization</h3></div>
+            </div>
+            <div class="sust-feature-item">
+                <div class="sust-icon">☁️</div>
+                <div class="sust-text"><h3>Reducing carbon emissions</h3></div>
+            </div>
+            <div class="sust-feature-item">
+                <div class="sust-icon">☀️</div>
+                <div class="sust-text"><h3>Solar panels</h3></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== PROJECTS & EXPERIENCE ===== -->
+<section class="pe-wrap" id="projects">
+
+    <div class="pe-top">
+        <div>
+            <h1>Projects &amp; experience</h1>
+            <div class="pe-ar-title">المشاريع والخبرات</div>
+        </div>
+        <div style="text-align:right;">
+            <span class="profile-badge">Company profile / الملف التعريفي</span>
+            <p style="font-size:14px; color:#666; direction:rtl;">مؤسسة قسوة للمقاولات العامة</p>
+        </div>
+    </div>
+
+    <div class="pe-intro">
+        <div>
+            <h3>Delivering quality. Building trust.</h3>
+            <p>Qaswa General Contracting Establishment has successfully executed a wide range of projects across multiple sectors.</p>
+        </div>
+        <div class="pe-ar">
+            <h3>ننفذ بجودة، ونبني الثقة.</h3>
+            <p>نفذت مؤسسة قسوة للمقاولات العامة العديد من المشاريع في مختلف القطاعات بكفاءة وجودة عالية.</p>
+        </div>
+    </div>
+
+    <div class="pe-bar">Featured projects / المشاريع البارزة</div>
+
+    <div class="pe-list">
+
+        <div class="pe-item">
+            <div class="pe-num">01 <span>Project</span></div>
+            <div class="pe-body">
+                <div>
+                    <h4>Industrial building project</h4>
+                    <div class="pe-line">📍 <div><strong>Location:</strong> Riyadh, KSA</div></div>
+                    <div class="pe-line">📋 <div><strong>Scope of work:</strong> Design &amp; build of industrial building (structure, civil, finishes &amp; MEP works)</div></div>
+                    <div class="pe-line">👤 <div><strong>Client:</strong> Confidential</div></div>
+                </div>
+                <div class="pe-ar">
+                    <h4>المبنى الصناعي</h4>
+                    <div class="pe-line">📍 <div><strong>الموقع:</strong> الرياض</div></div>
+                    <div class="pe-line">📋 <div><strong>نطاق العمل:</strong> تصميم وتنفيذ مبنى صناعي (الهيكل الإنشائي، الأعمال المدنية، التشطيبات والأعمال الميكانيكية والكهربائية)</div></div>
+                    <div class="pe-line">👤 <div><strong>العميل:</strong> محاط بسرية</div></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="pe-item">
+            <div class="pe-num">02 <span>Project</span></div>
+            <div class="pe-body">
+                <div>
+                    <h4>Infrastructure works</h4>
+                    <div class="pe-line">📍 <div><strong>Location:</strong> Jeddah, KSA</div></div>
+                    <div class="pe-line">📋 <div><strong>Scope of work:</strong> Roads, earthworks, drainage, paving &amp; utilities</div></div>
+                    <div class="pe-line">👤 <div><strong>Client:</strong> Confidential</div></div>
+                </div>
+                <div class="pe-ar">
+                    <h4>أعمال البنية التحتية</h4>
+                    <div class="pe-line">📍 <div><strong>الموقع:</strong> جدة</div></div>
+                    <div class="pe-line">📋 <div><strong>نطاق العمل:</strong> أعمال الطرق، الحفر وردم التربة، تصريف المياه، الرصف والمرافق</div></div>
+                    <div class="pe-line">👤 <div><strong>العميل:</strong> محاط بسرية</div></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="pe-item">
+            <div class="pe-num">03 <span>Project</span></div>
+            <div class="pe-body">
+                <div>
+                    <h4>MEP installation project</h4>
+                    <div class="pe-line">📍 <div><strong>Location:</strong> Riyadh, KSA</div></div>
+                    <div class="pe-line">📋 <div><strong>Scope of work:</strong> Mechanical, electrical &amp; plumbing systems installation</div></div>
+                    <div class="pe-line">👤 <div><strong>Client:</strong> Confidential</div></div>
+                </div>
+                <div class="pe-ar">
+                    <h4>مشروع الأعمال الميكانيكية والكهربائية</h4>
+                    <div class="pe-line">📍 <div><strong>الموقع:</strong> الرياض</div></div>
+                    <div class="pe-line">📋 <div><strong>نطاق العمل:</strong> تركيب أنظمة التكييف والتبريد، الكهرباء، والصيانة</div></div>
+                    <div class="pe-line">👤 <div><strong>العميل:</strong> محاط بسرية</div></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="pe-item">
+            <div class="pe-num">04 <span>Project</span></div>
+            <div class="pe-body">
+                <div>
+                    <h4>Building construction project</h4>
+                    <div class="pe-line">📍 <div><strong>Location:</strong> Dammam, KSA</div></div>
+                    <div class="pe-line">📋 <div><strong>Scope of work:</strong> Construction of multi-storey building (structure, finishes &amp; external works)</div></div>
+                    <div class="pe-line">👤 <div><strong>Client:</strong> Confidential</div></div>
+                </div>
+                <div class="pe-ar">
+                    <h4>مشروع إنشاء مبنى</h4>
+                    <div class="pe-line">📍 <div><strong>الموقع:</strong> الدمام</div></div>
+                    <div class="pe-line">📋 <div><strong>نطاق العمل:</strong> إنشاء مبنى متعدد الأدوار (الهيكل الإنشائي، التشطيبات والأعمال الخارجية)</div></div>
+                    <div class="pe-line">👤 <div><strong>العميل:</strong> محاط بسرية</div></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="pe-stats">
+        <div><h3>100+</h3><p>Projects completed<br><small>مشاريع مكتملة</small></p></div>
+        <div><h3>200+</h3><p>Skilled workforce<br><small>كوادر فنية ومهنية</small></p></div>
+        <div><h3>15+</h3><p>Years of experience<br><small>سنوات من الخبرة</small></p></div>
+        <div><h3>100%</h3><p>Commitment to quality &amp; safety<br><small>التزام كامل بالجودة والسلامة</small></p></div>
+    </div>
+
+</section>
+
+<!-- ===== ORG CHART ===== -->
+<section class="org-section">
+    <div class="org-header"><h2>Organizational chart</h2></div>
+
+    <div class="org-chart">
+        <div class="org-node node-gm">General manager<span>Executive management</span></div>
+        <div class="org-row-divider"></div>
+
+        <div class="org-row">
+            <div class="org-node">Project manager<span>Operations</span></div>
+            <div class="org-node">Business development manager<span>Strategy &amp; growth</span></div>
+        </div>
+        <div class="org-row-divider"></div>
+
+        <div class="org-row">
+            <div class="org-node">Civil construction manager<span>Civil division</span></div>
+            <div class="org-node">Electro-mechanical manager<span>MEP division</span></div>
+            <div class="org-node">Financial manager<span>Finance &amp; accounts</span></div>
+            <div class="org-node">Administration manager<span>Administration</span></div>
+        </div>
+        <div class="org-row-divider"></div>
+
+        <div class="org-row">
+            <div class="org-group">
+                <div class="org-node" style="font-size:11px;">Civil engineers</div>
+                <div class="org-node" style="font-size:11px;">Quantity surveyors</div>
+            </div>
+            <div class="org-group">
+                <div class="org-node" style="font-size:11px;">Electrical engineers</div>
+                <div class="org-node" style="font-size:11px;">Mechanical engineers</div>
+            </div>
+            <div class="org-group">
+                <div class="org-node" style="font-size:11px;">Accountant</div>
+                <div class="org-node" style="font-size:11px;">Accountant</div>
+            </div>
+            <div class="org-group">
+                <div class="org-node" style="font-size:11px;">Human resource admin</div>
+                <div class="org-node" style="font-size:11px;">Public relations admin</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== OUR PROJECTS TABLE ===== -->
+<section class="projects-wrap">
+
+    <div class="projects-head">
+        <div>
+            <h1>Our projects</h1>
+            <div class="pe-ar-title">مشاريعنا</div>
+        </div>
+        <div style="text-align:right;">
+            <span class="profile-badge">Company profile / الملف التعريفي</span>
+            <p style="font-size:14px; color:#666; direction:rtl;">مؤسسة قسوة للمقاولات العامة</p>
+        </div>
+    </div>
+
+    <div class="table-scroll">
+        <table class="projects-table">
+            <thead>
+                <tr>
+                    <th>Sr. no.</th>
+                    <th>Location</th>
+                    <th>Company</th>
+                    <th>Contractor</th>
+                    <th>Project name</th>
+                    <th>Scope of work</th>
+                    <th>Start</th>
+                    <th>Finish</th>
+                    <th>Remarks</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr>
+                    <td class="sr">1</td>
+                    <td data-label="Location">K.S.A.</td>
+                    <td data-label="Company">National Water Company</td>
+                    <td data-label="Contractor">Advanced Tarmeez Contracting</td>
+                    <td class="name" data-label="Project name">Extension of generator building</td>
+                    <td class="scope" data-label="Scope of work">Concrete work, brick work, asphalt work, electrical and mechanical works, site preparation &amp; temporary facilities for offices</td>
+                    <td class="center" data-label="Start">2025</td>
+                    <td class="center" data-label="Finish">2025</td>
+                    <td class="center status-ongoing" data-label="Remarks">Ongoing 🟠</td>
+                </tr>
+
+                <tr>
+                    <td class="sr">2</td>
+                    <td data-label="Location">K.S.A.</td>
+                    <td data-label="Company">Al Suwaidi Industrial Services</td>
+                    <td data-label="Contractor">Al Suwaidi Industrial Services</td>
+                    <td class="name" data-label="Project name">SIS new Rabigh yard construction</td>
+                    <td class="scope" data-label="Scope of work">Site preparation, boundary walls, metal sliding gates, building foundations, all UG utilities, prefab (porta cabin) building for mess hall and mosque &amp; road works</td>
+                    <td class="center" data-label="Start">2025</td>
+                    <td class="center" data-label="Finish">2025</td>
+                    <td class="center status-ongoing" data-label="Remarks">Ongoing 🟠</td>
+                </tr>
+
+                <tr>
+                    <td class="sr">3</td>
+                    <td data-label="Location">K.S.A.</td>
+                    <td data-label="Company">Estedama Dammam</td>
+                    <td data-label="Contractor">Reviva</td>
+                    <td class="name" data-label="Project name">Safe management for industrial waste</td>
+                    <td class="scope" data-label="Scope of work">Replacing 9.0 m sliding gates with new motor-operated gates &amp; arm barriers</td>
+                    <td class="center" data-label="Start">2025</td>
+                    <td class="center" data-label="Finish">2025</td>
+                    <td class="center status-ongoing" data-label="Remarks">Ongoing 🟠</td>
+                </tr>
+
+                <tr>
+                    <td class="sr">4</td>
+                    <td data-label="Location">K.S.A.</td>
+                    <td data-label="Company">Elsewedy / Synchydro</td>
+                    <td data-label="Contractor">Handasati</td>
+                    <td class="name" data-label="Project name">Reinforcement of Rabigh power plant</td>
+                    <td class="scope" data-label="Scope of work">Supply manpower for fence, pile cutting, concrete foundation, back filling and site preparation</td>
+                    <td class="center" data-label="Start">2025</td>
+                    <td class="center" data-label="Finish">2025</td>
+                    <td class="center status-ongoing" data-label="Remarks">Ongoing 🟠</td>
+                </tr>
+
+                <tr>
+                    <td class="sr">5</td>
+                    <td data-label="Location">K.S.A.</td>
+                    <td data-label="Company">Elsewedy / Siemens Energy</td>
+                    <td data-label="Contractor">GSSC</td>
+                    <td class="name" data-label="Project name">Reinforcement of Rabigh power plant 1.2 GW SCC6-5000F 3+1 project</td>
+                    <td class="scope" data-label="Scope of work">Supply manpower for fence, scaffolding, steel fixer and carpenter</td>
+                    <td class="center" data-label="Start">2025</td>
+                    <td class="center" data-label="Finish">2025</td>
+                    <td class="center status-ongoing" data-label="Remarks">Ongoing 🟠</td>
+                </tr>
+
+                <tr>
+                    <td class="sr">6</td>
+                    <td data-label="Location">K.S.A.</td>
+                    <td data-label="Company">Petro Rabigh</td>
+                    <td data-label="Contractor">Al-Amara</td>
+                    <td class="name" data-label="Project name">Maintenance and mechanical work</td>
+                    <td class="scope" data-label="Scope of work">Supply and installation of temporary facilities at site</td>
+                    <td class="center" data-label="Start">2025</td>
+                    <td class="center" data-label="Finish">2025</td>
+                    <td class="center status-ongoing" data-label="Remarks">Ongoing 🟠</td>
+                </tr>
+
+                <tr>
+                    <td class="sr">7</td>
+                    <td data-label="Location">K.S.A.</td>
+                    <td data-label="Company">Petro Rabigh</td>
+                    <td data-label="Contractor">Al-Amara</td>
+                    <td class="name" data-label="Project name">Maintenance and mechanical work</td>
+                    <td class="scope" data-label="Scope of work">Supply and installation of temporary facilities at camp</td>
+                    <td class="center" data-label="Start">2024</td>
+                    <td class="center" data-label="Finish">2025</td>
+                    <td class="center status-ongoing" data-label="Remarks">Ongoing 🟠</td>
+                </tr>
+
+                <tr>
+                    <td class="sr">8</td>
+                    <td data-label="Location">K.S.A.</td>
+                    <td data-label="Company">Larsen &amp; Toubro</td>
+                    <td data-label="Contractor">Sameep Company</td>
+                    <td class="name" data-label="Project name">Mechanical shutdown at Petro Rabigh</td>
+                    <td class="scope" data-label="Scope of work">Supply and installation of temporary facilities at site &amp; manpower supply</td>
+                    <td class="center" data-label="Start">2025</td>
+                    <td class="center" data-label="Finish">2025</td>
+                    <td class="center status-complete" data-label="Remarks">Complete 🟢</td>
+                </tr>
+
+                <tr>
+                    <td class="sr">9</td>
+                    <td data-label="Location">K.S.A.</td>
+                    <td data-label="Company">Petro Rabigh</td>
+                    <td data-label="Contractor">Lizmontagens</td>
+                    <td class="name" data-label="Project name">Repairing of industrial furnaces and chimneys</td>
+                    <td class="scope" data-label="Scope of work">Supply and installation of temporary facilities at site, manpower supply &amp; renting generators, compressors etc.</td>
+                    <td class="center" data-label="Start">2025</td>
+                    <td class="center" data-label="Finish">2025</td>
+                    <td class="center status-complete" data-label="Remarks">Complete 🟢</td>
+                </tr>
+
+                <tr>
+                    <td class="sr">10</td>
+                    <td data-label="Location">K.S.A.</td>
+                    <td data-label="Company">Saudi Electric Company</td>
+                    <td data-label="Contractor">GSSC</td>
+                    <td class="name" data-label="Project name">Maintenance work</td>
+                    <td class="scope" data-label="Scope of work">Manpower supply</td>
+                    <td class="center" data-label="Start">2024</td>
+                    <td class="center" data-label="Finish">2025</td>
+                    <td class="center status-complete" data-label="Remarks">Complete 🟢</td>
+                </tr>
+
+                <tr>
+                    <td class="sr">11</td>
+                    <td data-label="Location">K.S.A.</td>
+                    <td data-label="Company">Elsewedy / Siemens Energy</td>
+                    <td data-label="Contractor">Handasati</td>
+                    <td class="name" data-label="Project name">Reinforcement of Rabigh power plant 1.2 GW SCC6-5000F 3+1 project</td>
+                    <td class="scope" data-label="Scope of work">Supply manpower for fence, gate house, back filling and site preparation</td>
+                    <td class="center" data-label="Start">2024</td>
+                    <td class="center" data-label="Finish">2025</td>
+                    <td class="center status-complete" data-label="Remarks">Complete 🟢</td>
+                </tr>
+
+                <tr>
+                    <td class="sr">12</td>
+                    <td data-label="Location">K.S.A.</td>
+                    <td data-label="Company">Bin Quraya</td>
+                    <td data-label="Contractor">Alrelco</td>
+                    <td class="name" data-label="Project name">Construction of camp</td>
+                    <td class="scope" data-label="Scope of work">40 prefab (porta cabin) supply and installation with all mechanical and electrical works</td>
+                    <td class="center" data-label="Start">2024</td>
+                    <td class="center" data-label="Finish">2025</td>
+                    <td class="center status-complete" data-label="Remarks">Complete 🟢</td>
+                </tr>
+
+                <tr>
+                    <td class="sr">13</td>
+                    <td data-label="Location">K.S.A.</td>
+                    <td data-label="Company">Arabian Cement Company, Rabigh plant</td>
+                    <td data-label="Contractor">GSSC</td>
+                    <td class="name" data-label="Project name">Maintenance work</td>
+                    <td class="scope" data-label="Scope of work">Mechanical manpower supply works</td>
+                    <td class="center" data-label="Start">2024</td>
+                    <td class="center" data-label="Finish">2025</td>
+                    <td class="center status-complete" data-label="Remarks">Complete 🟢</td>
+                </tr>
+
+                <tr>
+                    <td class="sr">14</td>
+                    <td data-label="Location">K.S.A.</td>
+                    <td data-label="Company">Saudi Readymax Company, Jeddah</td>
+                    <td data-label="Contractor">Saudi Readymax Company</td>
+                    <td class="name" data-label="Project name">Maintenance work</td>
+                    <td class="scope" data-label="Scope of work">Maintenance for plant and trucks</td>
+                    <td class="center" data-label="Start">2024</td>
+                    <td class="center" data-label="Finish">2025</td>
+                    <td class="center status-complete" data-label="Remarks">Complete 🟢</td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<!-- ===== MISSION & VISION ===== -->
+<section class="mission-section">
+    <div class="mission-grid">
+        <div class="mission-content-side">
+            <h2 class="section-title">Mission &amp; vision</h2>
+
+            <div class="mission-box">
+                <h3><i class="fa-solid fa-bullseye"></i> Our mission</h3>
+                <p>With a collaborative spirit we facilitate engineers and deliver construction and other services fostering the Kingdom's ethical, social, economic, and intellectual growth, using progressive and diverse techniques on the cutting edge of the construction industry.</p>
+            </div>
+
+            <div class="mission-box" style="margin-bottom:0;">
+                <h3><i class="fa-solid fa-eye"></i> Our vision</h3>
+                <p>To set the standard and lead the way in a wide range of services to all arenas through hard work, ethical business practices and philanthropic contribution.</p>
+            </div>
+        </div>
+
+        <div class="mission-image-side">
+            <img src="splash14.jpg" alt="Mission and vision">
+        </div>
+    </div>
+</section>
+
+<!-- ===== EQUIPMENT ===== -->
+<section class="equipment-section">
+    <div class="equipment-grid">
+        <div class="equipment-left">
+            <h2 class="section-title">Equipment &amp; machinery</h2>
+            <p class="section-desc">We own a large group of modern equipment and machinery to accomplish our projects on time and with high quality and flexibility.</p>
+
+            <div class="table-scroll">
+                <table class="equipment-table">
+                    <thead>
+                        <tr><th>Type of equipment</th><th>Quantity</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Tower crane</td><td>04</td></tr>
+                        <tr><td>Truck crane (hydraulic)</td><td>07</td></tr>
+                        <tr><td>Excavator</td><td>12</td></tr>
+                        <tr><td>Backhoe / front loader</td><td>08</td></tr>
+                        <tr><td>Bulldozer</td><td>03</td></tr>
+                        <tr><td>Grader</td><td>04</td></tr>
+                        <tr><td>Road roller / compactor</td><td>05</td></tr>
+                        <tr><td>Loader</td><td>06</td></tr>
+                        <tr><td>Dump truck (10–24 m³)</td><td>15</td></tr>
+                        <tr><td>Low bed trailer</td><td>04</td></tr>
+                        <tr><td>Bus / minibus</td><td>06</td></tr>
+                        <tr><td>Man lift / scissor lift</td><td>05</td></tr>
+                        <tr><td>Mobile light tower</td><td>10</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="equipment-right">
+            <div class="machinery-img-box"><img src="splash15.jpg" alt="Machinery"></div>
+            <div class="machinery-img-box"><img src="splash16.jpg" alt="Machinery"></div>
+            <div class="machinery-img-box"><img src="splash17.jpg" alt="Machinery"></div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== DEPARTMENTS ===== -->
+<section class="departments-section" id="departments">
+    <div class="departments-grid">
+        <div class="dept-card">
+            <img src="splash90.jpg" alt="Mechanical department">
+            <div class="dept-overlay"></div>
+            <div class="dept-content">
+                <h3>Mechanical department</h3>
+                <a href="mechanical.html" class="dept-btn">Explore <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="dept-card">
+            <img src="splash91.jpg" alt="Electrical department">
+            <div class="dept-overlay"></div>
+            <div class="dept-content">
+                <h3>Electrical department</h3>
+                <a href="electrical.html" class="dept-btn">Explore <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="dept-card">
+            <img src="splash92.jpg" alt="Telecommunication department">
+            <div class="dept-overlay"></div>
+            <div class="dept-content">
+                <h3>Telecommunication department</h3>
+                <a href="telecommunication.html" class="dept-btn">Explore <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== SECTORS ===== -->
+<section class="innovation-section">
+    <div class="innovation-container">
+        <div class="section-title-box">
+            <h2 class="section-title">Sectors</h2>
+        </div>
+        <div class="section-content-box">
+            <h3 class="main-heading">Innovation has no limits.</h3>
+            <p class="section-desc">At Qaswaah, our expertise spans a wide spectrum of the construction industry, underscoring our commitment to excellence, innovation, and sustainable development in every project. We integrate quality engineering and advanced technology, ensuring that each endeavor not only meets, but exceeds industry standards.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ===== EXPERIENCE ===== -->
+<section class="experience-section">
+    <div class="exp-header"><h2>Our experience and expertise</h2></div>
+
+    <div class="exp-grid">
+        <div class="hex-card"><i class="fa-solid fa-shield-halved"></i><h3>25</h3><p>Years in construction</p></div>
+        <div class="stat-card"><i class="fa-solid fa-file-contract"></i><h3>$8B</h3><p>Value of completed projects</p></div>
+        <div class="stat-card"><i class="fa-solid fa-file-lines"></i><h3>$4B</h3><p>Value of ongoing projects</p></div>
+        <div class="stat-card"><i class="fa-solid fa-clock"></i><h3>100</h3><p>Million hours without LTI</p></div>
+        <div class="hex-card"><i class="fa-solid fa-ruler-combined"></i><h3>5M</h3><p>Total built-up area (m²)</p></div>
+        <div class="stat-card"><i class="fa-solid fa-industry"></i><h3>07</h3><p>Concrete production plants</p></div>
+        <div class="stat-card"><i class="fa-solid fa-award"></i><h3>06</h3><p>International certificates</p></div>
+        <div class="stat-card"><i class="fa-solid fa-box-archive"></i><h3>120</h3><p>Projects delivered</p></div>
+        <div class="hex-card"><i class="fa-solid fa-user-gear"></i><h3>600</h3><p>Engineers &amp; technicians</p></div>
+        <div class="stat-card"><i class="fa-solid fa-users"></i><h3>10,000</h3><p>Professionals in our talent pool</p></div>
+        <div class="stat-card"><i class="fa-solid fa-truck-monster"></i><h3>1,000</h3><p>Plants, machinery &amp; vehicles</p></div>
+        <div class="stat-card"><i class="fa-solid fa-handshake"></i><h3>2,000</h3><p>Suppliers &amp; contracting partners</p></div>
+    </div>
+</section>
+
+<!-- ===== POLICIES ===== -->
+<section class="policy-section">
+    <div class="policy-header">
+        <h2>Quality &amp; HSE policies</h2>
+        <div class="arabic-title">سياسات الجودة والسلامة والصحة المهنية</div>
+    </div>
+
+    <div class="policy-body">
+        <div class="policy-card">
+            <div class="policy-content-en">
+                <div class="policy-title-wrapper">
+                    <i class="fa-solid fa-award"></i>
+                    <h3>Quality policy</h3>
+                </div>
+                <p>We are committed to delivering exceptional construction and engineering services that consistently meet or exceed client expectations. Through rigorous quality control systems, continuous workforce training, and adherence to international standards, we ensure excellence in every project we execute.</p>
+            </div>
+            <div class="policy-content-ar">
+                <div class="policy-title-wrapper-ar">
+                    <h3>سياسة الجودة</h3>
+                    <i class="fa-solid fa-award"></i>
+                </div>
+                <p>نحن ملتزمون بتقديم خدمات إنشاءات وهندسة استثنائية تلبي توقعات العملاء أو تتجاوزها باستمرار. ومن خلال أنظمة مراقبة الجودة الصارمة، والتدريب المستمر للقوى العاملة، والالتزام بالمعايير الدولية، نضمن التميز في كل مشروع ننفذه.</p>
+            </div>
+        </div>
+
+        <div class="policy-card">
+            <div class="policy-content-en">
+                <div class="policy-title-wrapper">
+                    <i class="fa-solid fa-helmet-safety"></i>
+                    <h3>HSE policy</h3>
+                </div>
+                <p>The safety and health of our employees and partners, and the protection of the environment, are our top priorities. We maintain a zero-incident culture by strictly implementing proactive safety measures, hazard identification, and eco-friendly practices across all operations.</p>
+            </div>
+            <div class="policy-content-ar">
+                <div class="policy-title-wrapper-ar">
+                    <h3>سياسة السلامة والصحة والبيئة</h3>
+                    <i class="fa-solid fa-helmet-safety"></i>
+                </div>
+                <p>تعتبر سلامة وصحة موظفينا وشركائنا وحماية البيئة من أهم أولوياتنا. نحافظ على ثقافة خالية من الحوادث من خلال التطبيق الصارم لتدابير السلامة الاستباقية، وتحديد المخاطر، والممارسات الصديقة للبيئة عبر كافة العمليات.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== VIDEO ===== -->
+<section class="video-section">
+    <div class="video-header">
+        <h2>Our project in action</h2>
+        <p>Watch how we deliver excellence, innovation, and quality engineering in every project.</p>
+    </div>
+
+    <div class="video-box">
+        <video controls autoplay muted loop playsinline>
+            <source src="67.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+</section>
+
+<!-- ===== MOVING PROJECT CARDS ===== -->
+<section class="moving-section">
+    <div class="section-header">
+        <h2>Our construction projects</h2>
+        <p>Explore our recent real-site developments and milestones.</p>
+    </div>
+
+    <div class="marquee-container">
+        <div class="marquee-track">
+            <div class="project-card"><div class="card-img-box"><img src="po1.jpeg" alt="Project site"></div></div>
+            <div class="project-card"><div class="card-img-box"><img src="po2.jpeg" alt="Project site"></div></div>
+            <div class="project-card"><div class="card-img-box"><img src="po3.jpeg" alt="Project site"></div></div>
+            <div class="project-card"><div class="card-img-box"><img src="po5.jpeg" alt="Project site"></div></div>
+
+            <!-- Loop ko seamless banane ke liye same 4 cards dobara -->
+            <div class="project-card"><div class="card-img-box"><img src="po1.jpeg" alt="Project site"></div></div>
+            <div class="project-card"><div class="card-img-box"><img src="po2.jpeg" alt="Project site"></div></div>
+            <div class="project-card"><div class="card-img-box"><img src="po3.jpeg" alt="Project site"></div></div>
+            <div class="project-card"><div class="card-img-box"><img src="po5.jpeg" alt="Project site"></div></div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== VAT CERTIFICATE ===== -->
+<section class="vat-section">
+    <div class="vat-card">
+        <div class="vat-header">
+            <h3><i class="fa-solid fa-file-shield"></i> VAT registration certificate</h3>
+            <div class="arabic-header">شهادة تسجيل ضريبة القيمة المضافة</div>
+        </div>
+
+        <div class="vat-body">
+            <div class="vat-intro">
+                The General Authority of Zakat &amp; Tax (GAZT) certifies that the taxpayer below is VAT registered on <strong>09/10/2022</strong>.
+            </div>
+
+            <div class="vat-details">
+                <div class="vat-row">
+                    <div>
+                        <div class="label">Taxpayer name</div>
+                        <div class="value">Qaswa General Contracting Establishment</div>
+                    </div>
+                    <div class="ar">
+                        <div class="label">اسم المكلف</div>
+                        <div class="value">مؤسسة قسوة للمقاولات العامة</div>
+                    </div>
+                </div>
+
+                <div class="vat-row">
+                    <div>
+                        <div class="label">VAT registration number</div>
+                        <div class="value">310003413100003</div>
+                    </div>
+                    <div class="ar">
+                        <div class="label">رقم التسجيل الضريبي</div>
+                        <div class="value">310003413100003</div>
+                    </div>
+                </div>
+
+                <div class="vat-row">
+                    <div>
+                        <div class="label">Effective registration date</div>
+                        <div class="value">2022/11/01</div>
+                    </div>
+                    <div class="ar">
+                        <div class="label">تاريخ نفاذ التسجيل</div>
+                        <div class="value">2022/11/01</div>
+                    </div>
+                </div>
+
+                <div class="vat-row">
+                    <div>
+                        <div class="label">Taxpayer address</div>
+                        <div class="value">الرياض، الأمير متعب بن عبد العزيز، 12824</div>
+                    </div>
+                    <div class="ar">
+                        <div class="label">عنوان المكلف</div>
+                        <div class="value">الرياض، الأمير متعب بن عبد العزيز، 12824</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="vat-footer">
+            مكلف مسجل في ضريبة القيمة المضافة. هذه الوثيقة مرسلة من النظام الآلي ولا تحتاج إلى توقيع - الهيئة العامة للزكاة والدخل
+        </div>
+    </div>
+</section>
+
+<!-- ===== COMMERCIAL REGISTRATION ===== -->
+<section class="commercial-section">
+    <div class="comm-header">
+        <h2>Commercial registration</h2>
+        <div class="arabic-title">السجل التجاري</div>
+    </div>
+
+    <div class="comm-desc">
+        Qaswa General Contracting Establishment is legally registered in the Kingdom of Saudi Arabia.
+        <div class="ar-desc">مؤسسة قسوة للمقاولات العامة مسجلة رسمياً في المملكة العربية السعودية</div>
+    </div>
+
+    <div class="cert-document">
+        <div class="doc-top-header">
+            <div class="ministry-logo-text"><i class="fa-solid fa-building-columns"></i> وزارة التجارة</div>
+            <h3>شهادة السجل التجاري</h3>
+        </div>
+
+        <div class="doc-body-grid">
+            <div class="qr-box">
+                <img src="qr-code-placeholder.png" alt="CR QR code">
+                <div class="qr-label">البيانات الأساسية للسجل التجاري</div>
+                <div class="cr-number-bottom">7031157246</div>
+            </div>
+
+            <div class="details-list">
+                <div class="detail-item">
+                    <span class="label-ar">الاسم التجاري / المنشأة:</span>
+                    <span class="value-ar">مؤسسة قسوة للمقاولات العامة</span>
+                </div>
+                <div class="detail-item">
+                    <span class="label-ar">الرقم الوطني الموحد:</span>
+                    <span class="value-ar">7031157246</span>
+                </div>
+                <div class="detail-item">
+                    <span class="label-ar">تاريخ الإصدار:</span>
+                    <span class="value-ar">05/10/2022</span>
+                </div>
+                <div class="detail-item">
+                    <span class="label-ar">نوع الكيان:</span>
+                    <span class="value-ar">مؤسسة</span>
+                </div>
+                <div class="detail-item">
+                    <span class="label-ar">حالة السجل:</span>
+                    <span class="value-ar status-active">نشط</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== ABOUT COMPANY ===== -->
+<section class="about-company-section">
+    <div class="about-grid">
+        <div class="about-text-content">
+            <div class="about-subtitle">About</div>
+            <h2>Our company</h2>
+            <p>Our organization is composed of highly qualified and dedicated teams of experienced engineers, professionals, construction managers and superintendents. This heritage gives us the stability to build long-term relationships with our clients and offer them a full range of diversified construction services.</p>
+            <p>Our goal is to provide the most creative and cost-effective services to every client. It is the reason we have more than 100 clients listed in our portfolio.</p>
+        </div>
+
+        <div class="about-images-grid">
+            <div class="about-img-box"><img src="po6.jpg" alt="Construction project"></div>
+            <div class="about-img-box"><img src="po7.jpg" alt="Construction project"></div>
+            <div class="about-img-box"><img src="po8.jpg" alt="Construction project"></div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== CERTIFICATES ===== -->
+<section class="certificates-section">
+    <div class="sec-header">
+        <h2>Official certificates &amp; memberships</h2>
+        <div class="ar-title">الشهادات والاعتمادات الرسمية</div>
+    </div>
+
+    <div class="certificates-grid">
+        <div class="cert-card">
+            <div class="cert-card-header">
+                <h3><i class="fa-solid fa-file-invoice-dollar"></i> Zakat certificate</h3>
+                <div class="ar-header">شهادة الزكاة</div>
+            </div>
+
+            <div class="cert-card-body">
+                <div class="cert-row">
+                    <div class="info-en">
+                        <div class="label">Taxpayer name</div>
+                        <div class="value">Qaswa General Contracting</div>
+                    </div>
+                    <div class="info-ar">
+                        <div class="label">اسم المكلف</div>
+                        <div class="value">مؤسسة قسوة للمقاولات العامة</div>
+                    </div>
+                </div>
+
+                <div class="cert-row">
+                    <div class="info-en">
+                        <div class="label">Certificate no.</div>
+                        <div class="value">1026597333</div>
+                    </div>
+                    <div class="info-ar">
+                        <div class="label">رقم الشهادة</div>
+                        <div class="value">1026597333</div>
+                    </div>
+                </div>
+
+                <div class="cert-row">
+                    <div class="info-en">
+                        <div class="label">Expiry date</div>
+                        <div class="value">04/02/2027 AD</div>
+                    </div>
+                    <div class="info-ar">
+                        <div class="label">تاريخ الانتهاء</div>
+                        <div class="value">1448/07/27 هـ</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cert-card-footer">الهيئة العامة للزكاة والضريبة والجمارك - ZATCA</div>
+        </div>
+
+        <div class="cert-card">
+            <div class="cert-card-header">
+                <h3><i class="fa-solid fa-certificate"></i> Chamber of commerce</h3>
+                <div class="ar-header">عضوية الغرفة التجارية</div>
+            </div>
+
+            <div class="cert-card-body">
+                <div class="cert-row">
+                    <div class="info-en">
+                        <div class="label">Company name</div>
+                        <div class="value">Qaswa General Contracting</div>
+                    </div>
+                    <div class="info-ar">
+                        <div class="label">اسم المنشأة</div>
+                        <div class="value">مؤسسة قسوة للمقاولات العامة</div>
+                    </div>
+                </div>
+
+                <div class="cert-row">
+                    <div class="info-en">
+                        <div class="label">Membership no.</div>
+                        <div class="value">1041691503</div>
+                    </div>
+                    <div class="info-ar">
+                        <div class="label">رقم العضوية / السجل</div>
+                        <div class="value">1041691503</div>
+                    </div>
+                </div>
+
+                <div class="cert-row">
+                    <div class="info-en">
+                        <div class="label">Status</div>
+                        <div class="value">Active member</div>
+                    </div>
+                    <div class="info-ar">
+                        <div class="label">الحالة</div>
+                        <div class="value">ساري المفعول</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cert-card-footer">الغرفة التجارية بالرياض - Chamber of Commerce</div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== BANK STATEMENT ===== -->
+<section class="statement-section">
+    <div class="stmt-header">
+        <div class="stmt-title-group">
+            <h3>Statement of account</h3>
+            <div class="ar-title">كشف حساب</div>
+        </div>
+        <div class="stmt-bank-logo">SNB</div>
+    </div>
+
+    <div class="stmt-subbar">
+        <div>Account information</div>
+        <span>تفاصيل الحساب</span>
+    </div>
+
+    <div class="stmt-info-box">
+        <div class="info-col-en">
+            <div class="lbl">Account name</div>
+            <div class="val">Qaswa General Contracting Establishment</div>
+            <div class="lbl" style="margin-top:12px;">Address</div>
+            <div class="val">Prince Metib Bin Abdulaziz, Al-Riyadh 12824</div>
+        </div>
+        <div class="info-col-ar">
+            <div class="lbl">اسم الحساب</div>
+            <div class="val">مؤسسة قسوة للمقاولات العامة</div>
+            <div class="lbl" style="margin-top:12px;">العنوان</div>
+            <div class="val">الأمير متعب بن عبدالعزيز، الرياض، حي الربوة 12824</div>
+        </div>
+    </div>
+
+    <div class="stmt-subbar">
+        <div>Statement information</div>
+        <span>تفاصيل الكشف</span>
+    </div>
+
+    <div class="table-scroll">
+        <table class="stmt-table">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th class="ar">التاريخ</th>
+                    <th>Account number</th>
+                    <th class="ar">رقم الحساب / العملة</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>26/02/2023 – 01/10/2022</td>
+                    <td class="ar">06/08/1444 - 05/03/1444</td>
+                    <td>24700000341406</td>
+                    <td class="ar">حساب جاري تحت الطلب - ريال</td>
+                </tr>
+                <tr>
+                    <td>06/08/1444 – 05/03/1444</td>
+                    <td class="ar">-</td>
+                    <td>SA071000002470000341406</td>
+                    <td class="ar">SAR Current Account</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<!-- ===== WHY QASWAAH ===== -->
+<section class="why-section">
+    <div class="why-header">
+        <h2>Why Qaswaah?</h2>
+        <div class="ar-title">لماذا قسوة؟</div>
+    </div>
+
+    <div class="why-intro">
+        At Qaswaah, we deliver reliable solutions, build lasting relationships and create value for our clients and communities.
+        <div class="ar-intro">في قسوة، نقدم حلولاً موثوقة، ونبني علاقات طويلة الأمد، ونحقق قيمة حقيقية لعملائنا ومجتمعنا.</div>
+    </div>
+
+    <div class="why-grid">
+        <div class="why-card">
+            <div class="why-icon"><i class="fa-solid fa-users-gear"></i></div>
+            <div class="why-content">
+                <h3>Experienced management team</h3>
+                <p>Our management team brings decades of experience in executing complex projects across various industries.</p>
+                <div class="ar-text"><strong>فريق إداري ذو خبرة عالية:</strong> يتمتع فريق إدارتنا بخبرة تمتد لسنوات طويلة في تنفيذ المشاريع المعقدة في مختلف القطاعات.</div>
+            </div>
+        </div>
+
+        <div class="why-card">
+            <div class="why-icon"><i class="fa-solid fa-clock-rotate-left"></i></div>
+            <div class="why-content">
+                <h3>Timely project delivery</h3>
+                <p>We plan, schedule and execute projects to ensure on-time completion.</p>
+                <div class="ar-text"><strong>التسليم في الوقت المحدد:</strong> نخطط ونبرمج وننفذ المشاريع لضمان إنجازها في الوقت المحدد.</div>
+            </div>
+        </div>
+
+        <div class="why-card">
+            <div class="why-icon"><i class="fa-solid fa-helmet-safety"></i></div>
+            <div class="why-content">
+                <h3>Qualified technical workforce</h3>
+                <p>We employ skilled, certified and experienced professionals to deliver high quality results.</p>
+                <div class="ar-text"><strong>كوادر فنية مؤهلة:</strong> نوظف كوادر مؤهلة ومعتمدة وذات خبرة لتقديم نتائج عالية الجودة.</div>
+            </div>
+        </div>
+
+        <div class="why-card">
+            <div class="why-icon"><i class="fa-solid fa-handshake-angle"></i></div>
+            <div class="why-content">
+                <h3>Competitive pricing</h3>
+                <p>We offer cost-effective solutions without compromising on quality and safety.</p>
+                <div class="ar-text"><strong>أسعار تنافسية:</strong> نقدم حلولاً اقتصادية وفعالة دون المساس بالجودة والسلامة.</div>
+            </div>
+        </div>
+
+        <div class="why-card">
+            <div class="why-icon"><i class="fa-solid fa-industry"></i></div>
+            <div class="why-content">
+                <h3>Industrial &amp; commercial expertise</h3>
+                <p>We have successfully delivered projects in industrial, commercial and infrastructure sectors.</p>
+                <div class="ar-text"><strong>خبرة في القطاعات الصناعية والتجارية:</strong> نفذنا بنجاح العديد من المشاريع في القطاعات الصناعية والتجارية والبنية التحتية.</div>
+            </div>
+        </div>
+
+        <div class="why-card">
+            <div class="why-icon"><i class="fa-solid fa-truck-fast"></i></div>
+            <div class="why-content">
+                <h3>Modern equipment &amp; resources</h3>
+                <p>We own modern equipment and utilize advanced technology to deliver superior performance.</p>
+                <div class="ar-text"><strong>معدات وموارد حديثة:</strong> نمتلك معدات حديثة ونستخدم أحدث التقنيات لتحقيق أداء متفوق في جميع مشاريعنا.</div>
+            </div>
+        </div>
+
+        <div class="why-card">
+            <div class="why-icon"><i class="fa-solid fa-award"></i></div>
+            <div class="why-content">
+                <h3>Quality assurance</h3>
+                <p>Our quality systems and processes ensure compliance with international standards.</p>
+                <div class="ar-text"><strong>ضمان الجودة:</strong> تضمن أنظمة وإجراءات الجودة لدينا الالتزام بأعلى المعايير العالمية.</div>
+            </div>
+        </div>
+
+        <div class="why-card">
+            <div class="why-icon"><i class="fa-solid fa-face-smile"></i></div>
+            <div class="why-content">
+                <h3>Client satisfaction</h3>
+                <p>Client satisfaction is our top priority and the foundation of our continued success.</p>
+                <div class="ar-text"><strong>رضا العملاء:</strong> رضا عملائنا هو أولويتنا القصوى وهو أساس نجاحنا واستمرارنا.</div>
+            </div>
+        </div>
+
+        <div class="why-card">
+            <div class="why-icon"><i class="fa-solid fa-shield-heart"></i></div>
+            <div class="why-content">
+                <h3>HSE commitment</h3>
+                <p>We are strongly committed to health, safety and environment in all our operations.</p>
+                <div class="ar-text"><strong>الالتزام بالصحة والسلامة والبيئة:</strong> نلتزم التزاماً تاماً بتطبيق أعلى معايير الصحة والسلامة وحماية البيئة في جميع أعمالنا.</div>
+            </div>
+        </div>
+
+        <div class="why-card">
+            <div class="why-icon"><i class="fa-solid fa-map-location-dot"></i></div>
+            <div class="why-content">
+                <h3>Kingdom-wide operations</h3>
+                <p>We have the capability to mobilize resources and execute projects across the Kingdom.</p>
+                <div class="ar-text"><strong>خدماتنا في جميع مناطق المملكة:</strong> لدينا القدرة على تعبئة الموارد وتنفيذ المشاريع في جميع مناطق المملكة العربية السعودية.</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="qaswa-footer" id="contact">
+
+    <div class="footer-brand">
+        <div class="footer-logo-icon"><i class="fa-solid fa-building"></i></div>
+        <h2>Qaswah | قصواء</h2>
+        <p>Qaswa General Contracting Establishment</p>
+        <div class="ar-sub">مؤسسة قسوة للمقاولات العامة</div>
+    </div>
+
+    <div class="thank-you-box">
+        <h3>Thank you</h3>
+        <div class="divider-line"></div>
+        <div class="ar-thanks">شكراً لكم</div>
+    </div>
+
+    <div class="footer-tagline">
+        <div class="en-tag">Building trust. Delivering excellence.</div>
+        <div class="ar-tag">نبني الثقة ... وننجز التميز</div>
+    </div>
+
+    <div class="footer-contact-wrapper">
+        <div class="contact-heading"><i class="fa-solid fa-diamond"></i> Contact us <i class="fa-solid fa-diamond"></i></div>
+
+        <div class="contact-grid">
+            <div class="contact-item">
+                <div class="contact-icon-box"><i class="fa-solid fa-phone"></i></div>
+                <div class="contact-details">
+                    <span>+966 59 754 2019</span>
+                    <span>+966 50 984 5043</span>
+                </div>
+            </div>
+
+            <div class="contact-item">
+                <div class="contact-icon-box"><i class="fa-solid fa-phone"></i></div>
+                <div class="contact-details">
+                    <span>+966 59 298 8709</span>
+                    <span>+966 54 643 7778</span>
+                </div>
+            </div>
+
+            <div class="contact-item">
+                <div class="contact-icon-box"><i class="fa-solid fa-envelope"></i></div>
+                <div class="contact-details">
+                    <span>imran@qaswaest.com</span>
+                    <span>muneebahmad@qaswaest.com</span>
+                </div>
+            </div>
+
+            <div class="contact-item">
+                <div class="contact-icon-box"><i class="fa-solid fa-globe"></i></div>
+                <div class="contact-details">
+                    <span>www.qaswaah.com</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="contact-full-row">
+            <div class="full-row-item">
+                <i class="fa-solid fa-location-dot" style="color:#c5a059; font-size:18px;"></i>
+                <span>Qaswa General Contracting, P.O. Box 10126<br>Riyadh 43300, Al-Rawabi Eastern Ring Road<br>Riyadh, Kingdom of Saudi Arabia</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-partner-box">
+        <div class="partner-left">
+            <i class="fa-solid fa-handshake"></i>
+            <div class="partner-text-en">
+                We look forward to becoming your trusted partner for general contracting, industrial services, maintenance and manpower solutions.
+            </div>
+        </div>
+        <div class="partner-text-ar">
+            نتطلع إلى أن نكون شريككم الموثوق في أعمال المقاولات العامة والخدمات الصناعية والصيانة وحلول القوى العاملة.
+        </div>
+    </div>
+
+</footer>
+
+<script>
+/* ---------- Mobile nav ---------- */
+document.getElementById('navToggle').addEventListener('click', function () {
+    document.getElementById('navLinks').classList.toggle('open');
+});
+document.querySelectorAll('#navLinks a').forEach(function (a) {
+    a.addEventListener('click', function () {
+        document.getElementById('navLinks').classList.remove('open');
+    });
+});
+
+/* ---------- Hero slider ---------- */
+let slideIndex = 1;
+showSlides(slideIndex);
+setInterval(function () { moveSlide(1); }, 5000);
+
+function moveSlide(n)    { showSlides(slideIndex += n); }
+function currentSlide(n) { showSlides(slideIndex = n); }
+
+function showSlides(n) {
+    const slides = document.getElementsByClassName('slide');
+    const dots   = document.getElementsByClassName('dot');
+    if (!slides.length) return;
+
+    if (n > slides.length) slideIndex = 1;
+    if (n < 1) slideIndex = slides.length;
+
+    for (let i = 0; i < slides.length; i++) slides[i].classList.remove('active');
+    for (let i = 0; i < dots.length; i++)   dots[i].classList.remove('active');
+
+    slides[slideIndex - 1].classList.add('active');
+    if (dots[slideIndex - 1]) dots[slideIndex - 1].classList.add('active');
+}
+
+/* ---------- Services carousel (auto scroll) ---------- */
+(function () {
+    const track = document.querySelector('.carousel-track');
+    if (!track) return;
+
+    // Cards duplicate taake loop seamless lage
+    track.innerHTML += track.innerHTML;
+
+    let scrollAmount = 0;
+    let paused = false;
+    let animId;
+
+    track.addEventListener('mouseenter', function () { paused = true; });
+    track.addEventListener('mouseleave', function () { paused = false; });
+
+    function autoScroll() {
+        if (!paused) {
+            scrollAmount += 0.6;
+            if (scrollAmount >= track.scrollWidth / 2) scrollAmount = 0;
+            track.style.transform = 'translateX(-' + scrollAmount + 'px)';
+        }
+        animId = requestAnimationFrame(autoScroll);
+    }
+    animId = requestAnimationFrame(autoScroll);
+})();
+
+/* ---------- Scroll reveal animations ---------- */
+(function () {
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) return;
+
+    // 1) Single elements — seedha fade-up
+    const singles = [
+        '.overview-tag', '.overview-content h2', '.overview-content p', '.read-more-btn',
+        '.bec-header', '.services-header', '.sec-header', '.exp-header',
+        '.org-header', '.section-header', '.why-header', '.why-intro',
+        '.video-header', '.video-box', '.comm-header', '.comm-desc', '.cert-document',
+        '.pe-top', '.pe-intro', '.pe-bar', '.pe-stats', '.policy-header', '.policy-card',
+        '.projects-head', '.vat-card', '.stmt-header', '.stmt-info-box',
+        '.footer-brand', '.thank-you-box', '.footer-tagline',
+        '.footer-contact-wrapper', '.footer-partner-box',
+        '.org-node', '.org-group', '.org-row-divider'
+    ];
+    singles.forEach(function (sel) {
+        document.querySelectorAll(sel).forEach(function (el) { el.classList.add('reveal'); });
+    });
+
+    // 2) Left/right wale side-by-side blocks
+    [['.overview-image','reveal-left'], ['.mission-content-side','reveal-left'],
+     ['.mission-image-side','reveal-right'], ['.equipment-left','reveal-left'],
+     ['.equipment-right','reveal-right'], ['.sust-left','reveal-left'],
+     ['.sust-right','reveal-right'], ['.sust-center-img','reveal-zoom'],
+     ['.about-text-content','reveal-left'], ['.about-images-grid','reveal-right'],
+     ['.section-title-box','reveal-left'], ['.section-content-box','reveal-right'],
+     ['.qr-box','reveal-zoom']
+    ].forEach(function (pair) {
+        document.querySelectorAll(pair[0]).forEach(function (el) {
+            el.classList.add('reveal', pair[1]);
+        });
+    });
+
+    // 3) Grid ke items — ek ke baad ek (stagger)
+    const groups = [
+        '.stats-container', '.services-grid', '.departments-grid', '.exp-grid',
+        '.why-grid', '.certificates-grid', '.contact-grid', '.pe-list',
+        '.sust-right', '.about-images-grid'
+    ];
+    groups.forEach(function (sel) {
+        document.querySelectorAll(sel).forEach(function (parent) {
+            Array.prototype.forEach.call(parent.children, function (child, i) {
+                child.classList.add('reveal', 'reveal-d' + Math.min(i % 6 + 1, 6));
+            });
+        });
+    });
+
+    const io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add('is-visible');
+            io.unobserve(entry.target);
+        });
+    }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+
+    // Safety net: agar kisi wajah se koi element visible na ho paye, use 3s baad
+    // force show kar do — content kabhi permanently chhupa hua na rahe.
+    setTimeout(function () {
+        document.querySelectorAll('.reveal:not(.is-visible)').forEach(function (el) {
+            el.classList.add('is-visible');
+        });
+    }, 3000);
+})();
+
+/* ---------- Stat numbers count-up ---------- */
+(function () {
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const targets = document.querySelectorAll('.stat-box h3, .pe-stats h3, .stat-card h3, .hex-card h3');
+    if (!targets.length || reduce) return;
+
+    function animate(el) {
+        const raw = el.textContent.trim();
+        const match = raw.match(/([^\d]*)([\d,.]+)(.*)/);   // prefix, number, suffix
+        if (!match) return;
+
+        const prefix = match[1];
+        const suffix = match[3];
+        const hasComma = match[2].indexOf(',') !== -1;
+        const end = parseFloat(match[2].replace(/,/g, ''));
+        if (isNaN(end)) return;
+
+        const duration = 1400;
+        const start = performance.now();
+
+        function frame(now) {
+            const p = Math.min((now - start) / duration, 1);
+            const eased = 1 - Math.pow(1 - p, 3);          // ease-out
+            let val = end * eased;
+            val = end % 1 === 0 ? Math.round(val) : val.toFixed(1);
+            el.textContent = prefix + (hasComma ? Number(val).toLocaleString('en-US') : val) + suffix;
+            if (p < 1) requestAnimationFrame(frame);
+        }
+        requestAnimationFrame(frame);
+    }
+
+    const io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+            if (!entry.isIntersecting) return;
+            animate(entry.target);
+            io.unobserve(entry.target);
+        });
+    }, { threshold: 0.5 });
+
+    targets.forEach(function (el) { io.observe(el); });
+})();
+</script>
+
+</body>
+</html>
